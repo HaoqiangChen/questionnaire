@@ -79,6 +79,13 @@ export default {
                     this.showQuestion = true
                   }
                 }, {
+                  label: '返回',
+                  type: 'default',
+                  onClick: () => {
+                    // console.log('返回')
+                    this.backToApp()
+                  }
+                }, {
                   label: '继续答题',
                   type: 'primary',
                   onClick: () => {

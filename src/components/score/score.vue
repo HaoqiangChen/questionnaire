@@ -152,7 +152,7 @@ export default {
             }
           }
         }).then((res) => {
-          // console.log(res)
+          console.log(res)
           if (res.data.status === ERR_OK) {
             this.answerList = res.data.result.rows[0].question
             if (!this.answerList.length) {
@@ -211,7 +211,7 @@ export default {
           // console.log(res)
           if (res.data.status === ERR_OK) {
             this.score = res.data.result.rows[0]
-            console.log(this.score)
+            // console.log(this.score)
             if (!this.score.weidu.length) {
               this.$weui.alert('该量表无需计分， 点击确认返回。', () => {
                 console.log('该量表无需计分，点击确定返回APP')

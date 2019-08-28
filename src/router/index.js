@@ -11,10 +11,10 @@ import audit from '@/components/audit/audit'
 import auditOff from '@/components/audit/auditoff'
 import extra from '@/components/extra/extra'
 
-import lbdc from '@/components/scale/lbdc'
-import wjdc from '@/components/survey/wjdc'
-import lbck from '@/components/score/lbck'
-import wjck from '@/components/audit/wjck'
+// import lbdc from '@/components/scale/lbdc'
+// import wjdc from '@/components/survey/wjdc'
+// import lbck from '@/components/score/lbck'
+// import wjck from '@/components/audit/wjck'
 
 Vue.use(Router)
 
@@ -24,15 +24,16 @@ const isonline = parseInt(getUrlParam('isonline'))
 // alert(getUrlParam('recordfk'))
 let index = ''
 
-if (type === 'lbdc' && isonline === 3) {
-  index = '/lbdc'
-} else if (type === 'wjdc' && isonline === 3) {
-  index = '/wjdc'
-} else if ((type === 'lbsh' || type === 'lbck') && isonline === 3) {
-  index = '/lbck'
-} else if ((type === 'wjsh' || type === 'wjck') && isonline === 3) {
-  index = '/wjck'
-} else if (type === 'lbdc' && !isonline) {
+// if (type === 'lbdc' && isonline === 3) {
+//   index = '/lbdc'
+// } else if (type === 'wjdc' && isonline === 3) {
+//   index = '/wjdc'
+// } else if ((type === 'lbsh' || type === 'lbck') && isonline === 3) {
+//   index = '/lbck'
+// } else if ((type === 'wjsh' || type === 'wjck') && isonline === 3) {
+//   index = '/wjck'
+// } else
+if (type === 'lbdc' && !isonline) {
   index = '/scaleoff'
 } else if (type === 'wjdc' && !isonline) {
   index = '/surveyoff'
@@ -59,22 +60,22 @@ export default new Router({
       path: '/',
       redirect: index
     },
-    {
-      path: '/lbdc',
-      component: lbdc
-    },
-    {
-      path: '/wjdc',
-      component: wjdc
-    },
-    {
-      path: '/lbck',
-      component: lbck
-    },
-    {
-      path: '/wjck',
-      component: wjck
-    },
+    // {
+    //   path: '/lbdc',
+    //   component: lbdc
+    // },
+    // {
+    //   path: '/wjdc',
+    //   component: wjdc
+    // },
+    // {
+    //   path: '/lbck',
+    //   component: lbck
+    // },
+    // {
+    //   path: '/wjck',
+    //   component: wjck
+    // },
 
     {
       path: '/scale',

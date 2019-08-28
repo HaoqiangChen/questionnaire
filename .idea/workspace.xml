@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/preface/scaleface.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/preface/scaleface.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/stylus/index.styl" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/stylus/index.styl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/audit/wjck.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/audit/wjck.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/scale/lbdc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/lbdc.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/scale/scale.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/scale.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/scale/scaleoff.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/scaleoff.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/score/lbck.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/score/lbck.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/score/score.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/score/score.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/survey/survey.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/survey.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/survey/surveyoff.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/surveyoff.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/survey/wjdc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/wjdc.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,35 +28,6 @@
         <option value="Vue Single File Component" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>idx</find>
-      <find>code</find>
-      <find>vconsole</find>
-      <find>showContentsDom</find>
-      <find>questionList</find>
-      <find>serverDate</find>
-      <find>axios.post</find>
-      <find>amr</find>
-      <find>file</find>
-      <find>maxchoose</find>
-      <find>getLocalCache</find>
-      <find>removeLocalCache</find>
-      <find>removeLocalAnswer</find>
-      <find>JSON.parse</find>
-      <find>记不清</find>
-      <find>是否继续上次的问卷调查</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>deviceDate</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>C:\Users\chq\Desktop\lixian</dir>
-      <dir>C:\Users\chq\Desktop\lixian\src\components</dir>
-      <dir>C:\Users\chq\Desktop\wenjuan\src\components</dir>
-      <dir>C:\Users\chq\Desktop\wenjuan\src\common\js</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -168,6 +141,8 @@
       <workItem from="1566881045994" duration="675000" />
       <workItem from="1566891279637" duration="3359000" />
       <workItem from="1566969224320" duration="2472000" />
+      <workItem from="1566975087508" duration="2141000" />
+      <workItem from="1566987515250" duration="3217000" />
     </task>
     <servers />
   </component>
@@ -188,7 +163,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
