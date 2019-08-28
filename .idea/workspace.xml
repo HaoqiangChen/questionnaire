@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/question/question.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="61" column="25" lean-forward="true" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/survey/wjdc.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-247">
+              <caret line="101" column="32" lean-forward="true" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>idx</find>
+      <find>code</find>
+      <find>vconsole</find>
+      <find>showContentsDom</find>
+      <find>questionList</find>
+      <find>serverDate</find>
+      <find>axios.post</find>
+      <find>amr</find>
+      <find>file</find>
+      <find>maxchoose</find>
+      <find>getLocalCache</find>
+      <find>removeLocalCache</find>
+      <find>removeLocalAnswer</find>
+      <find>JSON.parse</find>
+      <find>记不清</find>
+      <find>是否继续上次的问卷调查</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>deviceDate</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\chq\Desktop\lixian</dir>
+      <dir>C:\Users\chq\Desktop\lixian\src\components</dir>
+      <dir>C:\Users\chq\Desktop\wenjuan\src\components</dir>
+      <dir>C:\Users\chq\Desktop\wenjuan\src\common\js</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/config/index.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="width" value="1378" />
+    <option name="height" value="1048" />
+  </component>
+  <component name="ProjectId" id="1PdpFTZaa9KAhmrarhklEBJjxBZ" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="preface" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="questionnaire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="questionnaire" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="survey" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chq\Desktop\lixian\src\components\audit" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="" />
+      <created>1560130173914</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1560130173914</updated>
+      <workItem from="1560130176020" duration="20000" />
+      <workItem from="1560130204858" duration="14299000" />
+      <workItem from="1560146024676" duration="937000" />
+      <workItem from="1560147669726" duration="3727000" />
+      <workItem from="1560248971497" duration="658000" />
+      <workItem from="1560302279630" duration="2518000" />
+      <workItem from="1560304840362" duration="219000" />
+      <workItem from="1560394130243" duration="1491000" />
+      <workItem from="1560396121468" duration="3125000" />
+      <workItem from="1560496371513" duration="924000" />
+      <workItem from="1561446912807" duration="15669000" />
+      <workItem from="1561619987742" duration="22954000" />
+      <workItem from="1561693941484" duration="3489000" />
+      <workItem from="1561719493942" duration="21312000" />
+      <workItem from="1562577288536" duration="7145000" />
+      <workItem from="1562664617333" duration="11100000" />
+      <workItem from="1562732198277" duration="12520000" />
+      <workItem from="1562814057272" duration="558000" />
+      <workItem from="1562814632345" duration="884000" />
+      <workItem from="1563160620229" duration="286000" />
+      <workItem from="1563161139003" duration="2487000" />
+      <workItem from="1563168796135" duration="3519000" />
+      <workItem from="1563344786899" duration="1333000" />
+      <workItem from="1563364208154" duration="1515000" />
+      <workItem from="1563416032396" duration="68000" />
+      <workItem from="1563421408869" duration="14583000" />
+      <workItem from="1563462746907" duration="1662000" />
+      <workItem from="1563466794828" duration="1931000" />
+      <workItem from="1563500246167" duration="23714000" />
+      <workItem from="1563588480498" duration="13045000" />
+      <workItem from="1563713460891" duration="3139000" />
+      <workItem from="1563761934015" duration="3499000" />
+      <workItem from="1564383887822" duration="2960000" />
+      <workItem from="1564399226662" duration="2070000" />
+      <workItem from="1564451784078" duration="1753000" />
+      <workItem from="1564470536096" duration="228000" />
+      <workItem from="1564479393647" duration="354000" />
+      <workItem from="1564642342222" duration="143000" />
+      <workItem from="1564727870809" duration="774000" />
+      <workItem from="1564730753488" duration="202000" />
+      <workItem from="1564731499942" duration="96000" />
+      <workItem from="1564732982654" duration="2489000" />
+      <workItem from="1564739194202" duration="1968000" />
+      <workItem from="1564819093161" duration="729000" />
+      <workItem from="1564993327817" duration="8045000" />
+      <workItem from="1565022321217" duration="1235000" />
+      <workItem from="1565229121400" duration="19405000" />
+      <workItem from="1565273437727" duration="6124000" />
+      <workItem from="1565305639722" duration="24918000" />
+      <workItem from="1565404870397" duration="2345000" />
+      <workItem from="1565684807003" duration="585000" />
+      <workItem from="1565936377654" duration="3013000" />
+      <workItem from="1565946080175" duration="239000" />
+      <workItem from="1565992624460" duration="1726000" />
+      <workItem from="1566213725116" duration="3088000" />
+      <workItem from="1566301028800" duration="4199000" />
+      <workItem from="1566351102522" duration="47000" />
+      <workItem from="1566351162516" duration="16844000" />
+      <workItem from="1566390549102" duration="627000" />
+      <workItem from="1566438161943" duration="10920000" />
+      <workItem from="1566528270595" duration="1226000" />
+      <workItem from="1566826587685" duration="3201000" />
+      <workItem from="1566881045994" duration="675000" />
+      <workItem from="1566891279637" duration="3359000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3359000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="-6" width="1453" height="783" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="npm" side_tool="true" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19942611" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" weight="0.3290735" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3290735" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Key Promoter X" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/preface/scaleface.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="29" column="72" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/preface/preface.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="34" column="55" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/survey/wjdc.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-247">
+          <caret line="101" column="32" lean-forward="true" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/question/question.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="61" column="25" lean-forward="true" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,34 @@
+@import "./reset.styl"
+@import "./border.styl"
+@import "./base.styl"
+
+// custom
+input, textarea
+  caret-color $color-theme
+
+
+.question-loading
+  .weui-toast
+    width 6em
+    min-height 6em
+    margin-left -3em
+    margin-top -2em
+
+    .weui-toast__content
+      margin-top 20px
+
+.weui-picker
+  .weui-picker__bd
+    .weui-picker__group
+      .weui-picker__content
+        font-size 17px
+
+.weui-toptips
+  top $header-height
+
+.weui-dialog
+  left 26px
+  right 26px
+
+.weui-dialog__btn
+  color #09f
