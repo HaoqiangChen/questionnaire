@@ -3,17 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/stylus/index.styl" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/stylus/index.styl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/audit/wjck.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/audit/wjck.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/scale/lbdc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/lbdc.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/scale/scale.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/scale.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/scale/scaleoff.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/scaleoff.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/score/lbck.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/score/lbck.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/score/score.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/score/score.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/survey/survey.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/survey.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/survey/surveyoff.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/surveyoff.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/survey/wjdc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/wjdc.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -142,7 +131,7 @@
       <workItem from="1566891279637" duration="3359000" />
       <workItem from="1566969224320" duration="2472000" />
       <workItem from="1566975087508" duration="2141000" />
-      <workItem from="1566987515250" duration="3217000" />
+      <workItem from="1566987515250" duration="3843000" />
     </task>
     <servers />
   </component>
