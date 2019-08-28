@@ -38,9 +38,9 @@
             <li class="preface-item">
               被访谈人员姓名: <span class="underline">{{userDetail.criminalname}}</span>
             </li>
-            <li class="preface-item">
-              被访谈人员类型: <span class="underline">{{wjDetail.usertypename}}</span>
-            </li>
+<!--            <li class="preface-item">-->
+<!--              被访谈人员类型: <span class="underline">{{wjDetail.usertypename}}</span>-->
+<!--            </li>-->
             <li class="preface-item">
               访谈日期: <span class="underline">{{userDetail.starttime}}</span>
             </li>

@@ -76,23 +76,34 @@ export default {
           let cache = getLocalAnswer()
           // console.log(cache)
           if (cache.length) {
-            this.$weui.confirm('继续上次的问卷调查会直接跳过上次已答问题，请问是否确定', () => {
-              this.questionData = res.data.result.rows
-              this.questionData = this.questionData.concat(cache)
-              let _tmp = {}
-              this.questionData.map(_ => {
-                _tmp[_.idx] = _
-              })
-              this.questionData = Object.values(_tmp)
-              this.cachePage = parseInt(cache[cache.length - 1].idx)
-              this.showQuestion = true
-            }, () => {
-              console.log('取消继续上次的问卷调查')
-              removeLocalAnswer()
-              this.questionData = res.data.result.rows
-              this.showPreFace = true
-            }, {
-              title: '是否继续上次的问卷调查'
+            this.$weui.confirm('继续上次的问卷调查会直接跳过上次已答问题，请问是否确定', {
+              title: '是否继续上次的问卷调查',
+              className: 'weui-continue-dialog',
+              buttons: [{
+                label: '重新答题',
+                type: 'default',
+                onClick: () => {
+                  // console.log('重新答题')
+                  removeLocalAnswer()
+                  this.questionData = res.data.result.rows
+                  this.showPreFace = true
+                }
+              }, {
+                label: '继续答题',
+                type: 'primary',
+                onClick: () => {
+                  // console.log('继续答题')
+                  this.questionData = res.data.result.rows
+                  this.questionData = this.questionData.concat(cache)
+                  let _tmp = {}
+                  this.questionData.map(_ => {
+                    _tmp[_.idx] = _
+                  })
+                  this.questionData = Object.values(_tmp)
+                  this.cachePage = parseInt(cache[cache.length - 1].idx)
+                  this.showQuestion = true
+                }
+              }]
             })
           } else {
             this.questionData = res.data.result.rows

@@ -4,7 +4,8 @@
       <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>
       <q-scale v-if="scaleData.length" v-show="showQuestion" :scaleData="scaleData" :cachePage="cachePage"
                @showSubmitDom="showSubmitDom" @showFontSet="showFontSet"></q-scale>
-      <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion" :scaleData="scaleData"></submit>
+      <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"
+              :scaleData="scaleData"></submit>
       <success :action="action" v-show="showSuccess"></success>
     </div>
 
@@ -76,38 +77,49 @@ export default {
           if (res.data.status === ERR_OK) {
             let cache = getLocalAnswer()
             if (cache.length) {
-              this.$weui.confirm('继续上次的量表调查会直接跳过上次已答问题，请问是否确定', () => {
-                this.scaleData = res.data.result.rows[0].question
-                this.scaleData.map(item => {
-                  cache.map(_ => {
-                    if (parseInt(item.idx) === parseInt(_.idx)) {
-                      item.jumpback = _.jumpback
-                      if (parseInt(item.type) === 1) {
-                        item.option.forEach(i => {
-                          i.isChecked = false
-                        })
-                        item.option.filter(j => j.value === _.option[0].value)[0].isChecked = true
-                      } else {
-                        item.option.forEach(i => {
-                          _.option.forEach(j => {
-                            if (i.optionfk === j.value) {
-                              i.value = j.content
-                            }
-                          })
-                        })
-                      }
-                    }
-                  })
-                })
-                // console.log(this.scaleData)
-                this.cachePage = parseInt(cache[cache.length - 1].idx)
-                this.showQuestion = true
-              }, () => {
-                console.log('取消继续上次的量表调查')
-                this.scaleData = res.data.result.rows[0].question
-                this.showPreFace = true
-              }, {
-                title: '是否继续上次的量表调查'
+              this.$weui.confirm('继续上次的量表调查会直接跳过上次已答问题，请问是否确定', {
+                title: '是否继续上次的量表调查',
+                className: 'weui-continue-dialog',
+                buttons: [{
+                  label: '重新答题',
+                  type: 'default',
+                  onClick: () => {
+                    // console.log('重新答题')
+                    this.scaleData = res.data.result.rows[0].question
+                    this.showPreFace = true
+                  }
+                }, {
+                  label: '继续答题',
+                  type: 'primary',
+                  onClick: () => {
+                    // console.log('继续答题')
+                    this.scaleData = res.data.result.rows[0].question
+                    this.scaleData.map(item => {
+                      cache.map(_ => {
+                        if (parseInt(item.idx) === parseInt(_.idx)) {
+                          item.jumpback = _.jumpback
+                          if (parseInt(item.type) === 1) {
+                            item.option.forEach(i => {
+                              i.isChecked = false
+                            })
+                            item.option.filter(j => j.value === _.option[0].value)[0].isChecked = true
+                          } else {
+                            item.option.forEach(i => {
+                              _.option.forEach(j => {
+                                if (i.optionfk === j.value) {
+                                  i.value = j.content
+                                }
+                              })
+                            })
+                          }
+                        }
+                      })
+                    })
+                    // console.log(this.scaleData)
+                    this.cachePage = parseInt(cache[cache.length - 1].idx)
+                    this.showQuestion = true
+                  }
+                }]
               })
             } else {
               this.scaleData = res.data.result.rows[0].question
