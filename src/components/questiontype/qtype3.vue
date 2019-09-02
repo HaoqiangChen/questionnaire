@@ -30,7 +30,7 @@
         <!-- 属性验证，单行文本框，1-无属性 2-整数 3-百分数 -->
         <input ref="inputText" v-else :type="inputType(input.type)" v-model="input.value" @input="inputOnchange($event, input)"
                @blur="blurOnchange($event, input)" :class="{'underline': input.prefix || input.suffix}"
-               :style="{width:initWidth(input.prefix, input.suffix)}" @click="inputClick($event, input)">
+               :style="{width:initWidth(input.prefix, input.suffix)}">
         {{input.suffix}}
         <div class="field-child" v-if="showQchild(input)">
           <q-child :qchild="input.qchild"></q-child>
@@ -99,11 +99,6 @@ export default {
       } else {
         return '100%'
       }
-    },
-    inputClick (e, data) {
-      console.log(1)
-      console.log(this.$refs.inputText)
-      this.$refs.inputText[0].scrollIntoView()
     },
     inputOnchange (e, data) {
       let inputLen = e.target.value.length

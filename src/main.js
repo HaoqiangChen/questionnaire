@@ -8,7 +8,7 @@ import 'weui'
 import fastclick from 'fastclick'
 import qType3 from '@/components/questiontype/qtype3'
 import VueTouch from 'vue-touch'
-// import Vconsole from 'vconsole'
+import Vconsole from 'vconsole'
 
 import '@/common/stylus/index.styl'
 
@@ -17,7 +17,7 @@ fastclick.attach(document.body)
 Vue.prototype.$weui = weui
 Vue.component('q-type3', qType3)
 Vue.use(VueTouch, {name: 'v-touch'})
-// Vue.prototype.$vConsole = new Vconsole()
+Vue.prototype.$vConsole = new Vconsole()
 
 /* eslint-disable no-new */
 new Vue({

@@ -3,22 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/build.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/check-versions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/vue-loader.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.base.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.dev.conf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.prod.conf.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/fontset/fontset.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fontset/fontset.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/question/questionlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/questionlist.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/questiontype/qtype3.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/qtype3.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/survey/wjdc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/wjdc.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

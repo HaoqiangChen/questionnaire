@@ -130,6 +130,14 @@ export default {
     }
   },
   mounted () {
+    // window.onresize监听页面高度的变化
+    window.onresize = () => {
+      console.log(1)
+      return (() => {
+        // window.scroll(0, 0) // 滚到顶部
+        // document.getElementById(this.FullScreenId).scrollTop = document.getElementById(this.FullScreenId).scrollHeight
+      })()
+    }
   },
   methods: {
     showFontSet () {
