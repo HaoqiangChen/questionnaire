@@ -289,7 +289,7 @@ export default {
     onProgressBarChange (percent) {
       let maxPage = Math.max.apply(null, Array.from(new Set(this.answerIdx)).sort((a, b) => a - b))
       let percentPage = this.totalPage * percent | 0
-      console.log(percentPage, maxPage)
+      // console.log(percentPage, maxPage)
       if (percentPage + 1 >= maxPage) {
         // this.showPrevQuestion = false
         this.$weui.topTips(`才答到${maxPage}题，请按顺序继续作答`, {duration: 1000})
@@ -297,7 +297,7 @@ export default {
       } else {
         // this.showPrevQuestion = true
         percentPage = this._getNear(this.answerIdx, percentPage)
-        console.log(percentPage)
+        // console.log(percentPage)
         this._showQuestionIndex(percentPage, true)
       }
     },

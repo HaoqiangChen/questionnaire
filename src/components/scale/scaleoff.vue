@@ -62,7 +62,7 @@ export default {
       setTimeout(() => {
         window.WebViewJavascriptBridge.callHandler('question', {'action': 'getQuestion'}, (res) => {
           let offlineData = JSON.parse(res)
-          console.log(offlineData)
+          // console.log(offlineData)
           if (offlineData !== {}) {
             let cache = getLocalAnswer()
             if (cache.length) {

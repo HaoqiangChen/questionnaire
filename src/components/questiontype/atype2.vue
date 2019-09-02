@@ -10,7 +10,7 @@
                  :name="`q${answer.idx}`">
         </span>
           <div class="label" :for="`q${answer.idx}_${checkbox.value}`">
-            {{checkbox.label}}
+            <span v-html="checkbox.label"></span>
             <div class="label-desc" v-if="checkbox.isdesc === 1" v-html="checkbox.descr"></div>
             <div class="label-desc label-desc-alert" v-if="checkbox.isdesc === 2" @click.stop="alertDialog(checkbox)">
               选项说明

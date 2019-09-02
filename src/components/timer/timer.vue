@@ -64,10 +64,10 @@ export default {
       let visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
       const onVisibilityChange = function () {
         if (!document[hiddenProperty]) {
-          console.log('页面非激活')
+          // console.log('页面非激活')
           this.stop()
         } else {
-          console.log('页面激活')
+          // console.log('页面激活')
           document.removeEventListener(visibilityChangeEvent, onVisibilityChange)
         }
       }

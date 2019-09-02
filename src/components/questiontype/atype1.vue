@@ -9,7 +9,7 @@
           <input type="radio" :value="radio.value" :checked='radio.isChecked' :name="`q${answer.idx}`"
                  v-model="picked">
         </span>
-          <div class="label" :for="`q${answer.idx}_${id+1}`">{{radio.label}}
+          <div class="label" :for="`q${answer.idx}_${id+1}`"><span v-html="radio.label"></span>
             <div class="label-desc" v-if="radio.isdesc === 1" v-html="radio.descr"></div>
             <div class="label-desc label-desc-alert" v-if="radio.isdesc === 2" @click.stop="alertDialog(radio)">选项说明
             </div>

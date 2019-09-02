@@ -43,7 +43,7 @@ export default {
       setTimeout(() => {
         window.WebViewJavascriptBridge.callHandler('question', {'action': 'getQuestionResult'}, (res) => {
           let offlineData = JSON.parse(res)
-          console.log(offlineData)
+          // console.log(offlineData)
           if (offlineData.length) {
             this.answerList = this._normalizeAnswer(offlineData)
             // console.log(this.answerList)

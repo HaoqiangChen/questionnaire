@@ -12,7 +12,7 @@
             <i class="radio" :class="{'checked': radio.isChecked}"></i>
             <input type="radio" :value="radio.value" :checked='radio.isChecked' name="" v-model="picked">
           </span>
-            <div class="label" for="">{{radio.label}}</div>
+            <div class="label" for="" v-html="radio.label"></div>
           </div>
         </div>
 
@@ -22,7 +22,7 @@
             <i class="checkbox" :class="{'checked': checkbox.isChecked}"></i>
             <input type="checkbox" v-model="checkValue" :value="checkbox.value" :checked='checkbox.isChecked' name="">
           </span>
-            <div class="label" for="">{{checkbox.label}}</div>
+            <div class="label" for="" v-html="checkbox.label"></div>
           </div>
         </div>
 

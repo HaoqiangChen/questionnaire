@@ -73,7 +73,7 @@ export default {
             }
           }
         }).then((res) => {
-          console.log(res)
+          // console.log(res)
           if (res.data.status === ERR_OK) {
             let cache = getLocalAnswer()
             if (cache.length) {

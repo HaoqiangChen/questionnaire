@@ -54,7 +54,6 @@ export default {
     }
   },
   created () {
-    console.log(this.contentsList)
     this.chapterLen = this.contentsList.length
     this.contentsList.map(_ => {
       this.sectionLen += _.secondary.length

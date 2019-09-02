@@ -152,7 +152,7 @@ export default {
             }
           }
         }).then((res) => {
-          console.log(res)
+          // console.log(res)
           if (res.data.status === ERR_OK) {
             this.answerList = res.data.result.rows[0].question
             if (!this.answerList.length) {

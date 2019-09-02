@@ -105,7 +105,6 @@ export default {
       this.showQuestion = true
     },
     backToApp () {
-      console.log('关闭页面返回APP')
       window.WebViewJavascriptBridge.callHandler('question', {'action': 'finish'})
     }
   }

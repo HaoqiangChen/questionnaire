@@ -160,7 +160,7 @@ export default {
         }
         map[key].question.push(_)
       })
-      console.log(map)
+      // console.log(map)
       return map
     },
     backToQuestion () {

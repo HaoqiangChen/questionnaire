@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     initWidth (data) {
-      console.log(data)
       if (!(data.prefix || data.suffix)) return '100%'
     },
     showQchild (data) {

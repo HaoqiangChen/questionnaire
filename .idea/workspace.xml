@@ -3,11 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/question/questionlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/questionlist.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/questiontype/qtype3.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/qtype3.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/audit/auditoff.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/audit/auditoff.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/contents/contents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/contents/contents.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/extra/extra.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/extra/extra.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/question/qscale.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/qscale.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/questiontype/achild.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/achild.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/questiontype/atype1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/atype1.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/questiontype/atype2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/atype2.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/questiontype/atype3.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/atype3.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/questiontype/qchild.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/qchild.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/questiontype/qtype1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/qtype1.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/questiontype/qtype2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/qtype2.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/scale/scale.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/scale.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/scale/scaleoff.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/scaleoff.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/score/score.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/score/score.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/submit/submit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/submit/submit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/timer/timer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/timer/timer.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +150,7 @@
       <workItem from="1567477146931" duration="11620000" />
       <workItem from="1567602919446" duration="11532000" />
       <workItem from="1567689657539" duration="11094000" />
+      <workItem from="1567444502907" duration="660000" />
     </task>
     <servers />
   </component>
