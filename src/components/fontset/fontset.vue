@@ -27,7 +27,7 @@
 // 字体设置个数
 const FS_NUM = 5
 // 字体设置区间
-const FS_SPACING = 6
+const FS_SPACING = 10
 // 默认字体设置索引
 const FS_INDEX = FS_NUM / 2 | 0
 

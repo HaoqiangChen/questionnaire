@@ -71,6 +71,9 @@ export default {
     },
     cachePage: {
       type: Number
+    },
+    isFontSet: {
+      type: Boolean
     }
   },
   components: {
@@ -441,7 +444,11 @@ export default {
       }
     }
   },
-  watch: {}
+  watch: {
+    isFontSet () {
+      this.$refs.scroll.refresh()
+    }
+  }
 }
 </script>
 
