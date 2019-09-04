@@ -81,14 +81,6 @@ export default {
                 title: '是否继续上次的量表调查',
                 className: 'weui-continue-dialog',
                 buttons: [{
-                  label: '重新答题',
-                  type: 'default',
-                  onClick: () => {
-                    // console.log('重新答题')
-                    this.scaleData = res.data.result.rows[0].question
-                    this.showPreFace = true
-                  }
-                }, {
                   label: '返回',
                   type: 'default',
                   onClick: () => {

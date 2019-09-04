@@ -19,7 +19,7 @@ import questionList from '@/components/question/questionlist'
 import fontSet from '@/components/fontset/fontset'
 import submit from '@/components/submit/submit'
 import success from '@/components/success/success'
-import {getLocalAnswer, removeLocalAnswer} from '@/common/js/cache'
+import {getLocalAnswer} from '@/common/js/cache'
 
 export default {
   components: {
@@ -70,15 +70,6 @@ export default {
                 title: '是否继续上次的问卷调查',
                 className: 'weui-continue-dialog',
                 buttons: [{
-                  label: '重新答题',
-                  type: 'default',
-                  onClick: () => {
-                    // console.log('重新答题')
-                    removeLocalAnswer()
-                    this.questionData = JSON.parse(offlineData.detail).rows
-                    this.showQuestion = true
-                  }
-                }, {
                   label: '返回',
                   type: 'default',
                   onClick: () => {

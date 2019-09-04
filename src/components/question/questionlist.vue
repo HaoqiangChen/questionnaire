@@ -225,10 +225,10 @@ export default {
         // 一些特殊题目还有客户的特殊要求效果
         if (parseInt(question.formula) === 1) {
           if (parseInt(question.option[0].value) !== parseInt(question.option[1].value) + parseInt(question.option[2].value)) {
-            this.$weui.topTips(`小孩总数应为男孩与女孩之和`, {duration: warmDuration})
+            this.$weui.toast(`小孩总数应为男孩与女孩之和`, {duration: warmDuration, className: 'weui-toast-warning'})
             return false
           } else if (parseInt(question.option[3].value) > parseInt(question.option[0].value)) {
-            this.$weui.topTips(`排行数不能大于孩子总数`, {duration: warmDuration})
+            this.$weui.toast(`排行数不能大于孩子总数`, {duration: warmDuration, className: 'weui-toast-warning'})
             return false
           }
         }

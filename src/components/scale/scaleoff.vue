@@ -69,15 +69,7 @@ export default {
               this.$weui.confirm('继续上次的量表调查会直接跳过上次已答问题，请问是否确定', {
                 title: '是否继续上次的量表调查',
                 className: 'weui-continue-dialog',
-                buttons: [{
-                  label: '重新答题',
-                  type: 'default',
-                  onClick: () => {
-                    // console.log('重新答题')
-                    this.scaleData = JSON.parse(offlineData.detail)
-                    this.showQuestion = true
-                  }
-                }, {
+                buttons: [ {
                   label: '返回',
                   type: 'default',
                   onClick: () => {

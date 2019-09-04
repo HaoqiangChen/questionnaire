@@ -84,9 +84,18 @@ export default {
                 type: 'default',
                 onClick: () => {
                   // console.log('重新答题')
-                  removeLocalAnswer()
-                  this.questionData = res.data.result.rows
-                  this.showPreFace = true
+                  setTimeout(() => {
+                    console.log(this.$weui)
+                    this.$weui.confirm('重新答题会将之前已经回答的清空，点击确认重新答题，点击取消退出该页面？', () => {
+                      removeLocalAnswer()
+                      this.questionData = res.data.result.rows
+                      this.showPreFace = true
+                    }, () => {
+                      this.backToApp()
+                    }, {
+                      title: '是否确定重新答题'
+                    })
+                  }, 1000)
                 }
               }, {
                 label: '返回',
