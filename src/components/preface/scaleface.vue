@@ -38,9 +38,9 @@
             <li class="preface-item">
               被访谈人员姓名: <span class="underline">{{userDetail.criminalname}}</span>
             </li>
-<!--            <li class="preface-item">-->
-<!--              被访谈人员类型: <span class="underline">{{wjDetail.usertypename}}</span>-->
-<!--            </li>-->
+            <li class="preface-item">
+              被访谈人员类型: <span class="underline">{{userDetail.usertype}}</span>
+            </li>
             <li class="preface-item">
               访谈日期: <span class="underline">{{userDetail.starttime}}</span>
             </li>
@@ -92,11 +92,11 @@ export default {
       if (this.userDetail.supervisorcode) this.supervisor_code = this.userDetail.supervisorcode.split('')
       if (this.userDetail.bm) this.interviewee_code = this.userDetail.bm.split('')
 
-      if (this.wjDetail.usertype === 0) {
-        this.wjDetail.usertypename = '初犯'
-      } else if (this.wjDetail.usertype === 1) {
-        this.wjDetail.usertypename = '重犯'
-      } else if (this.wjDetail.usertype === 2) this.wjDetail.usertypename = '刑罚执行完毕后未重新犯罪者'
+      // if (this.wjDetail.usertype === 0) {
+      //   this.wjDetail.usertypename = '初犯'
+      // } else if (this.wjDetail.usertype === 1) {
+      //   this.wjDetail.usertypename = '重犯'
+      // } else if (this.wjDetail.usertype === 2) this.wjDetail.usertypename = '刑罚执行完毕后未重新犯罪者'
 
       if (getUrlParam('type') === 'lbdc') {
         this.headerTitle = '量表调查'

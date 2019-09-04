@@ -163,7 +163,7 @@ export default {
 
             let detail = {
               name: res.data.result.rows[0].name,
-              usertype: res.data.result.rows[0].usertype,
+              // usertype: res.data.result.rows[0].usertype,
               introduce: res.data.result.rows[0].introduce
             }
             this.wjDetail = detail
