@@ -28,9 +28,10 @@
                  readonly='readonly'>
         </div>
         <!-- 属性验证，单行文本框，1-无属性 2-整数 3-百分数 -->
-        <input ref="inputText" v-else :type="inputType(input.type)" v-model="input.value" @input="inputOnchange($event, input)"
+        <input ref="inputText" v-else :type="inputType(input.type)" v-model="input.value"
+               @input="inputOnchange($event, input)"
                @blur="blurOnchange($event, input)" :class="{'underline': input.prefix || input.suffix}"
-               :style="{width:initWidth(input.prefix, input.suffix)}">
+               :style="{width:initWidth(input.prefix, input.suffix)}" @click="inputClick($event)">
         {{input.suffix}}
         <div class="field-child" v-if="showQchild(input)">
           <q-child :qchild="input.qchild"></q-child>
@@ -62,7 +63,8 @@ export default {
   data () {
     return {
       inputs: this.question.option,
-      screenWidth: document.body.clientWidth, // 屏幕尺寸
+      screenWidth: document.body.clientWidth, // 屏幕宽度
+      screenHeight: document.documentElement.clientHeight, // 屏幕高度
       inputCorner: 0,
       inputAnswer: {},
       inputChildAnswer: ''
@@ -98,6 +100,14 @@ export default {
         return `${defaultWidth}px`
       } else {
         return '100%'
+      }
+    },
+    inputClick (e) {
+      // this.$refs.inputText[0].scrollIntoView()
+      if (e.clientY > this.screenHeight / 2) {
+        setTimeout(() => {
+          this.$refs.inputText[0].scrollIntoView(false)
+        }, 1000)
       }
     },
     inputOnchange (e, data) {

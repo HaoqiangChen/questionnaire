@@ -4,6 +4,7 @@
     <list default="true" id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/question/questionlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/questionlist.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/questiontype/qtype3.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/qtype3.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
@@ -137,6 +138,7 @@
       <workItem from="1566987515250" duration="3843000" />
       <workItem from="1567477146931" duration="11620000" />
       <workItem from="1567602919446" duration="11532000" />
+      <workItem from="1567689657539" duration="11094000" />
     </task>
     <servers />
   </component>

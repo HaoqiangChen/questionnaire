@@ -25,7 +25,7 @@
       </div>
     </scroll>
     <div v-show="showPrevQuestion" class="progress-bar-mask"></div>
-    <div class="iiw-footer">
+    <div class="iiw-footer" v-show="footerShow">
       <progress-bar :currentPage="currentPage" :totalPage="totalPage"
                     @percentChange="onProgressBarChange"></progress-bar>
       <div class="container">
@@ -103,7 +103,10 @@ export default {
       nextQuestion: 0,
       showTimer: true,
       answerIdx: [],
-      showPrevQuestion: false
+      showPrevQuestion: false,
+      windowHeight: document.documentElement.clientHeight, // 网页屏幕高度
+      screenHeight: document.documentElement.clientHeight, // 实时屏幕高度
+      footerShow: true // 显示或者隐藏footer
     }
   },
   created () {
@@ -131,13 +134,16 @@ export default {
   },
   mounted () {
     // window.onresize监听页面高度的变化
-    window.onresize = () => {
-      console.log(1)
-      return (() => {
-        // window.scroll(0, 0) // 滚到顶部
-        // document.getElementById(this.FullScreenId).scrollTop = document.getElementById(this.FullScreenId).scrollHeight
-      })()
-    }
+    // window.onresize = () => { // 不知道为什么这个方法在这里没有效果
+    //   return (() => {
+    //     this.screenHeight = document.documentElement.clientHeight
+    //   })()
+    // }
+
+    window.addEventListener('resize', () => {
+      this.screenHeight = document.documentElement.clientHeight
+      // this.$refs.scroll.refresh()
+    })
   },
   methods: {
     showFontSet () {
@@ -455,6 +461,15 @@ export default {
   watch: {
     isFontSet () {
       this.$refs.scroll.refresh()
+    },
+    screenHeight (newVal, oldVal) {
+      if (newVal < oldVal) {
+        this.$refs.questionSlider.style.paddingBottom = `${newVal}px`
+        this.footerShow = false
+      } else {
+        this.footerShow = true
+        this.$refs.questionSlider.style.paddingBottom = '100px'
+      }
     }
   }
 }
