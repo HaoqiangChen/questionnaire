@@ -75,13 +75,7 @@ export default {
                 duration: 300
               })
               setTimeout(() => {
-                window.WebViewJavascriptBridge.callHandler(
-                  'question',
-                  {'action': 'saveCache', 'key': 'key', 'value': 'value'},
-                  function (responseData) {
-                    document.getElementById('show').innerHTML = 'send get responseData from java, data = ' + responseData
-                  }
-                )
+                this.backToApp()
               }, 300)
             } else {
               this.$weui.toast('操作失败，请重新提交', {

@@ -317,7 +317,7 @@ export default {
           } else {
             return parseInt(data.idx) + 1
           }
-        }))).sort()
+        }))).sort((a, b) => a - b)
 
         this.questionList.forEach(item => { // 多选跳题
           for (let i = 0; i < jumpto.length; i++) {

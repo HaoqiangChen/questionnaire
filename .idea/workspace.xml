@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/preface/preface.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/preface/preface.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/preface/scaleface.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/preface/scaleface.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/scale/lbdc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/lbdc.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/scale/scale.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/scale.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/score/lbck.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/score/lbck.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/score/score.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/score/score.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/survey/survey.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/survey.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/answer/answer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/answer/answer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/question/questionlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/questionlist.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,6 +138,7 @@
       <workItem from="1567689657539" duration="11094000" />
       <workItem from="1567444502907" duration="660000" />
       <workItem from="1568000908116" duration="1336000" />
+      <workItem from="1568165796738" duration="2159000" />
     </task>
     <servers />
   </component>
