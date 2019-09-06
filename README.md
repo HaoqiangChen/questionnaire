@@ -1,6 +1,6 @@
-# wenjuan
+# questionnaire
 
-> A Vue.js project
+> A Vue.js project for questionnaire
 
 ## Build Setup
 
