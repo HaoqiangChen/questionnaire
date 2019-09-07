@@ -26,7 +26,7 @@
 import qType1 from '@/components/questiontype/qtype1'
 import qType2 from '@/components/questiontype/qtype2'
 import qType4 from '@/components/questiontype/qtype4'
-import {getLocalAnswer} from '@/common/js/cache'
+import {getLocalAnswer, deleteQuestionAnswer} from '@/common/js/cache'
 
 export default {
   props: {
@@ -91,6 +91,7 @@ export default {
         if (!relation && relationJumpto) {
           this.$emit('goSkip', parseInt(relationJumpto))
         } else if (!relation) {
+          deleteQuestionAnswer(parseInt(this.question.idx))
           this.$emit('goSkip', parseInt(this.question.idx) + 1)
         }
       }
@@ -98,7 +99,7 @@ export default {
     radioGoNext (data) {
       setTimeout(() => {
         this.$emit('radioGoNext', data)
-      }, 20)
+      }, 250)
     }
   },
   watch: {}
