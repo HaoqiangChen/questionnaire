@@ -84,6 +84,9 @@ export default {
     },
     cachePage: {
       type: Number
+    },
+    isFontSet: {
+      type: Boolean
     }
   },
   components: {
@@ -122,7 +125,9 @@ export default {
     if (this.cachePage) {
       this._showQuestionIndex(this.cachePage, true)
       this.currentPage = this.cachePage
-    } else this._showQuestionIndex(1, true)
+    } else {
+      this._showQuestionIndex(1, true)
+    }
 
     if (getLocalAnswer().length) {
       this.answerIdx = getLocalAnswer().map(_ => parseInt(_.idx))
@@ -253,8 +258,11 @@ export default {
     // 手指滑动松手后跳回上一题
     goPrevPage (data) {
       if (parseInt(data.idx) === 1) return
-      if (!data.jumpback) return
-      else this.prevQuestion = parseInt(data.jumpback)
+      if (!data.jumpback) {
+        return
+      } else {
+        this.prevQuestion = parseInt(data.jumpback)
+      }
       this.nowQuestion = parseInt(data.idx)
       this.currentPage = this.prevQuestion
       addClass(this.$refs.fieldset[0], 'fieldset-hook')
@@ -306,7 +314,9 @@ export default {
         this.questionList.map(_ => {
           _.show = false
         })
-      } else this.questionList.filter(_ => parseInt(_.idx) === index)[0].show = false
+      } else {
+        this.questionList.filter(_ => parseInt(_.idx) === index)[0].show = false
+      }
       this.questionList = JSON.parse(JSON.stringify(this.questionList))
     },
     _showQuestionIndex (index, all = false) {
@@ -334,7 +344,11 @@ export default {
       }
     }
   },
-  watch: {}
+  watch: {
+    isFontSet () {
+      this.$refs.scroll.refresh()
+    }
+  }
 }
 </script>
 

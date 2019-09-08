@@ -3,8 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/question/question.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/question.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/fontset/fontset.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/fontset/fontset.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/question/qextra.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/qextra.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/question/qscale.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/qscale.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/question/questionlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/questionlist.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/questiontype/qtype1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/qtype1.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/scale/lbdc.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/lbdc.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/scale/scale.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/scale.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/scale/scaleoff.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/scale/scaleoff.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/survey/survey.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/survey.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/survey/surveyoff.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/survey/surveyoff.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,6 +149,8 @@
       <workItem from="1568165796738" duration="2325000" />
       <workItem from="1568169015244" duration="58000" />
       <workItem from="1568187121928" duration="5913000" />
+      <workItem from="1568791621364" duration="8690000" />
+      <workItem from="1568857361823" duration="3651000" />
     </task>
     <servers />
   </component>

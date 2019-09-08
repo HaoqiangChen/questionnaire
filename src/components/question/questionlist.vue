@@ -53,7 +53,7 @@ import question from '@/components/question/question'
 import progressBar from '@/components/progressbar/progressbar'
 import contents from '@/components/contents/contents'
 import Timer from '@/components/timer/timer'
-import {weuiOption} from '@/common/js/global'
+import {autoDuration, weuiOption} from '@/common/js/global'
 import {addClass, removeClass} from '@/common/js/dom'
 import {getLocalAnswer, setLocalAnswer, deleteQuestionAnswer} from '@/common/js/cache'
 
@@ -400,7 +400,7 @@ export default {
     radioGoNext (data) {
       setTimeout(() => {
         this.goNextPage(data)
-      }, 20)
+      }, autoDuration)
     },
     onProgressBarChange (percent) {
       let maxPage = Math.max.apply(null, Array.from(new Set(this.answerIdx)).sort((a, b) => a - b))

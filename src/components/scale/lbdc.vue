@@ -3,7 +3,7 @@
     <div>
       <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>
       <q-scale v-if="scaleData.length" v-show="showQuestion" :scaleData="scaleData" :cachePage="cachePage"
-               @showSubmitDom="showSubmitDom" @showFontSet="showFontSet"></q-scale>
+               @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></q-scale>
       <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"></submit>
       <success :action="action" v-show="showSuccess"></success>
     </div>

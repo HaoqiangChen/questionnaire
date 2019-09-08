@@ -40,8 +40,6 @@ export default {
     }
   },
   mounted () {
-    setTimeout(() => {
-    }, 20)
   },
   computed: {},
   methods: {

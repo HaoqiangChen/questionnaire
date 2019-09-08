@@ -3,7 +3,7 @@
     <!--    <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>-->
     <question-list v-if="questionData.length && showQuestion" :questionData="questionData" :contentsList="contentsList"
                    :cachePage="cachePage"
-                   @showSubmitDom="showSubmitDom" @showFontSet="showFontSet"></question-list>
+                   @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
     <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"
             :questionData="questionData"></submit>
     <success :action="action" v-show="showSuccess"></success>
