@@ -1,39 +1,36 @@
 <template>
   <div class="qextra">
-    <scroll ref="scroll" class="qextra-wrapper">
-      <div class="qextra-slider" ref="questionSlider">
-        <transition name="touchMove">
-          <fieldset v-if="question.show" ref="fieldset" class='fieldset' v-for="(question, qnumber) in questionList"
-                    :key="qnumber" @touchstart="touchStart"
-                    @touchmove='touchMove($event, question)' @touchend='touchEnd($event, question)'>
-            <div class='field' :req='question.ismust' :topic='question.idx' :type='question.type'>
-              <div v-if="question.qclassify" class='field-classify'>【{{question.qclassify}}】</div>
-              <div v-if="question.qpremise" class='field-premise'>{{question.qpremise}}</div>
+    <div class="qextra-slider" ref="questionSlider">
+      <transition name="touchMove">
+        <fieldset v-if="question.show" ref="fieldset" class='fieldset' v-for="(question, qnumber) in questionList"
+                  :key="qnumber" @touchstart="touchStart"
+                  @touchmove='touchMove($event, question)' @touchend='touchEnd($event, question)'>
+          <div class='field' :req='question.ismust' :topic='question.idx' :type='question.type'>
+            <div v-if="question.qclassify" class='field-classify'>【{{question.qclassify}}】</div>
+            <div v-if="question.qpremise" class='field-premise'>{{question.qpremise}}</div>
 
-              <div class='field-label' v-html="`${question.name}`"></div>
+            <div class='field-label' v-html="`${question.name}`"></div>
 
-              <div class="field-controlgroup" v-if="question.type === '1'">
-                <div class="field-radio" v-for="(radio, id) in question.option" :key="id"
-                     @click.stop="Radio(radio, question)">
+            <div class="field-controlgroup" v-if="question.type === '1'">
+              <div class="field-radio" v-for="(radio, id) in question.option" :key="id"
+                   @click.stop="Radio(radio, question)">
               <span class="radiowrapper">
                 <i class="radio" :class="{'checked': radio.isChecked}"></i>
                 <input type="radio" :value="radio.value" :checked='radio.isChecked' :name="`q${question.qnumber}`"
                        v-model="picked">
               </span>
-                  <div class="label" :for="`q${question.qnumber}_${id+1}`">{{radio.label}}</div>
-                </div>
+                <div class="label" :for="`q${question.qnumber}_${id+1}`">{{radio.label}}</div>
               </div>
-
             </div>
-          </fieldset>
-        </transition>
-      </div>
-    </scroll>
+
+          </div>
+        </fieldset>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
-import Scroll from '@/components/scroll/scroll'
 import {autoDuration, weuiOption} from '@/common/js/global'
 import {addClass, removeClass} from '@/common/js/dom'
 
@@ -49,9 +46,6 @@ export default {
         return []
       }
     }
-  },
-  components: {
-    Scroll
   },
   data () {
     return {
@@ -245,12 +239,7 @@ export default {
   @import "~@/common/stylus/mixin"
 
   .qextra
-    position fixed
-    top $header-height
-    bottom 0
-    left 0
-    right 0
-    background-color $color-background
+    padding-top $header-height
 
   fieldset
     border none

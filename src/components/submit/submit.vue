@@ -15,10 +15,11 @@
 
 <script>
 import iiwHeader from '@/components/iiw-header/iiw-header'
-import {getLocalAnswer, getLocalCache, removeLocalAnswer, removeLocalCache} from '@/common/js/cache'
+import {getLocalAnswer, getLocalCache, removeLocalCache} from '@/common/js/cache'
 import {getUrlParam} from '@/common/js/util'
 
-const TIMER_KEY = `${getUrlParam('recordfk')}-${getUrlParam('paperfk')}-timer`
+const TIMER_KEY = `${getUrlParam('criminalfk')}-${getUrlParam('paperfk')}-timer`
+const ANSWER_KEY = `${getUrlParam('criminalfk')}-${getUrlParam('paperfk')}`
 
 export default {
   props: {
@@ -128,7 +129,7 @@ export default {
             })
             setTimeout(() => {
               this.$emit('showSuccessDom')
-              removeLocalAnswer()
+              removeLocalCache(ANSWER_KEY)
               removeLocalCache(TIMER_KEY)
             }, 300)
           })

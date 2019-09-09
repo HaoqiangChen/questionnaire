@@ -8,7 +8,7 @@
 import {getUrlParam} from '@/common/js/util'
 import {getLocalCache, setLocalCache} from '@/common/js/cache'
 
-const TIMER_KEY = `${getUrlParam('recordfk')}-${getUrlParam('paperfk')}-timer`
+const TIMER_KEY = `${getUrlParam('criminalfk')}-${getUrlParam('paperfk')}-timer`
 
 export default {
   data () {

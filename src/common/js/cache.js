@@ -7,8 +7,8 @@
 import storage from 'good-storage'
 import {getUrlParam} from '@/common/js/util'
 
-const ANSWER_KEY = `${getUrlParam('recordfk')}-${getUrlParam('paperfk')}`
-const SUBMIT_KEY = getUrlParam('recordfk')
+const ANSWER_KEY = `${getUrlParam('criminalfk')}-${getUrlParam('paperfk')}`
+const SUBMIT_KEY = getUrlParam('criminalfk')
 
 export function getLocalAnswer () {
   return storage.get(ANSWER_KEY, [])

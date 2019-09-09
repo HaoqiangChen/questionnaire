@@ -24,7 +24,9 @@ import fontSet from '@/components/fontset/fontset'
 
 import submit from '@/components/submit/submit'
 import success from '@/components/success/success'
-import {getLocalAnswer, removeLocalAnswer} from '@/common/js/cache'
+import {getLocalAnswer, removeLocalCache} from '@/common/js/cache'
+
+const ANSWER_KEY = `${getUrlParam('criminalfk')}-${getUrlParam('paperfk')}`
 
 export default {
   components: {
@@ -87,7 +89,7 @@ export default {
                   setTimeout(() => {
                     console.log(this.$weui)
                     this.$weui.confirm('重新答题会将之前已经回答的清空，点击确认重新答题，点击取消退出该页面？', () => {
-                      removeLocalAnswer()
+                      removeLocalCache(ANSWER_KEY)
                       this.questionData = res.data.result.rows
                       this.showPreFace = true
                     }, () => {
