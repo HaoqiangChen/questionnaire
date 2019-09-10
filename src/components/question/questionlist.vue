@@ -10,20 +10,26 @@
                     :key="qnumber" @touchstart="touchStart"
                     @touchmove='touchMove($event, question)' @touchend='touchEnd($event, question)'>
             <question :question="question" @goSkip="goSkip" @radioGoNext="radioGoNext"></question>
-            <div v-show="parseInt(question.idx) === cachePage + 1" class="field-finger">
-              <div class="left">
-                <img src="./right.png" alt="">
-                <div class="tip">向右滑动 上一题</div>
-              </div>
-              <div class="right">
-                <img src="./left.png" alt="">
-                <div class="tip">向左滑动 下一题</div>
-              </div>
-            </div>
+            <!--            <div v-show="parseInt(question.idx) === cachePage + 1" class="field-finger">-->
+            <!--              <div class="left">-->
+            <!--                <img src="./right.png" alt="">-->
+            <!--                <div class="tip">向右滑动 上一题</div>-->
+            <!--              </div>-->
+            <!--              <div class="right">-->
+            <!--                <img src="./left.png" alt="">-->
+            <!--                <div class="tip">向左滑动 下一题</div>-->
+            <!--              </div>-->
+            <!--            </div>-->
           </fieldset>
         </transition>
       </div>
     </scroll>
+    <div class="question-button">
+      <button class="question-btn questionPrev" @click="goPrevPage(questionList[currentPage - 1])"
+              v-show="currentPage !== 1">上一题
+      </button>
+      <button class="question-btn questionNext" @click="goNextPage(questionList[currentPage - 1])">下一题</button>
+    </div>
     <div v-show="showPrevQuestion" class="progress-bar-mask"></div>
     <div class="iiw-footer" v-show="footerShow">
       <progress-bar :currentPage="currentPage" :totalPage="totalPage"
@@ -53,7 +59,7 @@ import question from '@/components/question/question'
 import progressBar from '@/components/progressbar/progressbar'
 import contents from '@/components/contents/contents'
 import Timer from '@/components/timer/timer'
-import {autoDuration, weuiOption} from '@/common/js/global'
+import {weuiOption} from '@/common/js/global'
 import {addClass, removeClass} from '@/common/js/dom'
 import {getLocalAnswer, setLocalAnswer, deleteQuestionAnswer} from '@/common/js/cache'
 
@@ -387,6 +393,13 @@ export default {
       this._hideQuestionIndex(this.nowQuestion)
       this._showQuestionIndex(this.prevQuestion)
     },
+
+    // 点击上一题按钮
+    goPrevQuestion (data) {
+    },
+    // 点击下一题按钮
+    goNextQuestion (data) {
+    },
     saveAnswer (data) {
       let answer = getLocalAnswer()
       answer.push(data)
@@ -400,7 +413,7 @@ export default {
     radioGoNext (data) {
       setTimeout(() => {
         this.goNextPage(data)
-      }, autoDuration)
+      }, 20)
     },
     onProgressBarChange (percent) {
       let maxPage = Math.max.apply(null, Array.from(new Set(this.answerIdx)).sort((a, b) => a - b))
@@ -525,7 +538,23 @@ export default {
       padding 0 10px
       background-color $color-white
 
-  //margin 60px -50px 0
+  .question-button
+    position fixed
+    bottom 75PX
+    width 100%
+    text-align center
+
+    .question-btn
+      width 35%
+      padding 10PX 0
+      background transparent
+      border 1px solid $color-border
+      border-radius 5PX
+      font-weight bold
+
+      &.questionNext
+        background-color $color-header-theme
+        color $color-white
 
   .progress-bar-mask
     position fixed
