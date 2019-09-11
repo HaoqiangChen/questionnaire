@@ -2,7 +2,7 @@
 <template>
   <div class="qtype1">
     <div class="field-controlgroup">
-      <div class="field-radio" v-for="(radio, id) in radios" :key="id">
+      <div class="field-radio" v-for="(radio, id) in question.option" :key="id">
         <div class="radio-container" @click.stop="Radio(radio)">
           <span class="radiowrapper">
           <i class="radio" :class="{'checked': radio.isChecked}"></i>

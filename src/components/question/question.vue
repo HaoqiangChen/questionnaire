@@ -13,7 +13,7 @@
 
       <div v-if="question.qtip" class='field-tip'>{{question.qtip}}</div>
 
-      <q-type1 v-if="question.type === '1'" :question="question" @radioGoNext="radioGoNext"></q-type1>
+      <q-type1 v-if="question.type === '1'" :question.sync="question" @radioGoNext="radioGoNext"></q-type1>
       <q-type2 v-else-if="question.type === '2'" :question="question"></q-type2>
       <q-type3 v-else-if="question.type === '3'" :question="question"></q-type3>
       <q-type4 v-else :question="question"></q-type4>
@@ -97,9 +97,7 @@ export default {
       }
     },
     radioGoNext (data) {
-      setTimeout(() => {
-        this.$emit('radioGoNext', data)
-      }, 250)
+      this.$emit('radioGoNext', data)
     }
   },
   watch: {}
