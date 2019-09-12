@@ -39,7 +39,7 @@ export const inputOption = {
 // 设置weui插件的默认配置
 export const weuiOption = {
   // 设置警告停留时间
-  warmDuration: 1000,
+  warmDuration: 2000,
   // 设置datePicker开始时间
   dateStart: deviceDate.getFullYear() - 80,
   // 设置datePicker结束时间

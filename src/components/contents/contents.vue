@@ -9,7 +9,7 @@
             <div class="catelog-header">共{{chapterLen}}章{{sectionLen}}节</div>
             <ul>
               <li v-for="(group, index) in contentsList" :key="index">
-                <h3 @click.stop="toggleSheet(index)">{{group.type}}、{{group.name}} <i ref="foldIcon"></i></h3>
+                <h3 class="border-bottom" @click.stop="toggleSheet(index)">{{group.type}}、{{group.name}} <i ref="foldIcon"></i></h3>
                 <transition name="fold">
                   <ol ref="catelogFold" class="catelog-fold">
                     <li v-for="(item, index) in group.secondary" :key="index" class="border-bottom"
@@ -142,12 +142,12 @@ export default {
           li
             h3
               position relative
-              height 40PX
-              line-height 40PX
+              /*height 40PX*/
+              /*line-height 40PX*/
               font-size 18PX
               color $color-white
               background-color $color-header-theme
-              padding 0 16PX
+              padding 10PX 16PX
 
               i
                 display inline-block
@@ -156,7 +156,7 @@ export default {
                 bg-image('fold')
                 position absolute
                 top 50%
-                right 16PX
+                right 5PX
                 margin-top -8PX
 
             ol.catelog-fold

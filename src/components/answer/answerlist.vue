@@ -344,7 +344,7 @@ export default {
       height 40PX
       line-height 40PX
       padding-left 30px
-      font-size $font-size-24
+      font-size 16PX
       color $color-white
       background-color $color-header-theme
 </style>

@@ -2,7 +2,7 @@
   <div class="answer">
     <iiw-header :headerTitle="headerTitle" :rightBtn="rightBtn" @showFontSet="showFontSet"></iiw-header>
     <answer-list :data="answerList"></answer-list>
-<!--    <record v-if="fileUrl" :fileUrl="fileUrl"></record>-->
+    <!--    <record v-if="fileUrl" :fileUrl="fileUrl"></record>-->
     <div v-show="showAudit" class="iiw-footer">
       <div class="container">
         <div class="btn danger" @click="reinvestigation">重新调查</div>
@@ -48,8 +48,11 @@ export default {
   },
   computed: {
     showAudit () {
-      if (getUrlParam('type') === 'wjsh') return true
-      else return false
+      if (getUrlParam('type') === 'wjsh') {
+        return true
+      } else {
+        return false
+      }
     }
   },
   methods: {
@@ -114,7 +117,7 @@ export default {
               duration: 300
             })
             setTimeout(() => {
-              this.showSuccess = true
+              this.$emit('showSuccessDom')
             }, 300)
           })
         }).catch((err) => {

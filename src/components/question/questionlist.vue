@@ -10,22 +10,22 @@
                     :key="qnumber" @touchstart="touchStart"
                     @touchmove='touchMove($event, question)' @touchend='touchEnd($event, question)'>
             <question :question="question" @goSkip="goSkip" @radioGoNext="radioGoNext"></question>
-            <div class="question-button">
-              <button class="question-btn questionPrev" @click="goPrevPage(question)"
-                      v-show="currentPage !== 1">上一题
-              </button>
-              <button class="question-btn questionNext" @click="goNextPage(question)">下一题</button>
+            <div v-show="parseInt(question.idx) === cachePage + 1" class="field-finger">
+              <div class="left">
+                <img src="./right.png" alt="">
+                <div class="tip">向右滑动 上一题</div>
+              </div>
+              <div class="right">
+                <img src="./left.png" alt="">
+                <div class="tip">向左滑动 下一题</div>
+              </div>
             </div>
-            <!--            <div v-show="parseInt(question.idx) === cachePage + 1" class="field-finger">-->
-            <!--              <div class="left">-->
-            <!--                <img src="./right.png" alt="">-->
-            <!--                <div class="tip">向右滑动 上一题</div>-->
-            <!--              </div>-->
-            <!--              <div class="right">-->
-            <!--                <img src="./left.png" alt="">-->
-            <!--                <div class="tip">向左滑动 下一题</div>-->
-            <!--              </div>-->
-            <!--            </div>-->
+<!--            <div class="question-button">-->
+<!--              <button class="question-btn questionPrev" @click="goPrevPage(question)"-->
+<!--                      v-show="currentPage !== 1">上一题-->
+<!--              </button>-->
+<!--              <button class="question-btn questionNext" @click="goNextPage(question)">下一题</button>-->
+<!--            </div>-->
           </fieldset>
         </transition>
       </div>
@@ -321,7 +321,7 @@ export default {
         // 二、循环所选选项，如果该选项有配置跳转题，说明该跳转题必答，赋予 relationSkip属性，汇总这些跳转题为数组，进行去重排序
         let jumpto = Array.from(new Set(data.option.filter(_a => _a.isChecked).map(_b => {
           if (_b.jumpto) {
-            // _.relationSkip = true
+            _b.relationSkip = true
             this.questionList.filter(_c => parseInt(_c.idx) === _b.jumpto)[0].relationSkip = true
             return _b.jumpto
           } else {

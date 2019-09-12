@@ -1,7 +1,7 @@
 <template>
   <div class="audit">
     <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>
-    <answer v-if="showAnswer" :answerList="answerList" @showFontSet="showFontSet"></answer>
+    <answer v-if="showAnswer" :answerList="answerList" @showFontSet="showFontSet" @showSuccessDom="showSuccessDom"></answer>
 
     <success :action="action" v-show="showSuccess"></success>
 
@@ -115,6 +115,10 @@ export default {
     showQuestionDom () {
       this.showPreFace = false
       this.showAnswer = true
+    },
+    showSuccessDom () {
+      this.showAnswer = false
+      this.showSuccess = true
     },
     backToApp () {
       // console.log('关闭页面返回APP')

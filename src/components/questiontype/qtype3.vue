@@ -149,7 +149,8 @@ export default {
 
       if (data.type === '2' && inputReg.isInt(e.target.value)) {
         this.$weui.topTips('只能输入整数')
-        data.value = e.target.value.replace(/[^\d]/g, '')
+        // data.value = e.target.value.replace(/[^\d]/g, '')
+        data.value = e.target.value.substr(0, e.target.value.search(/[^\d]/g))
       } else if (data.type === '3' && !inputReg.isPercent(e.target.value)) {
         this.$weui.topTips('请输入0-100的百分数，最多保留3位小数')
         // data.value = e.target.value.substr(0, e.target.value.indexOf('.') + 4)
