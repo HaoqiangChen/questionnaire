@@ -2,7 +2,7 @@
 <template>
   <div class="qtype3" id="qtype3">
     <div ref="fieldInput" class="field-input">
-      <span v-for="(input, index) in inputs" :key="index">
+      <span v-for="(input, index) in question.option" :key="index">
         {{input.prefix}}
         <!-- 多行文本框 -->
         <div class="field-textarea" v-if="input.type === '0'">

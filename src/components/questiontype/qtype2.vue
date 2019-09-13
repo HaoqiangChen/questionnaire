@@ -2,7 +2,7 @@
 <template>
   <div class="qtype2">
     <div class="field-controlgroup">
-      <div class="field-checkbox" v-for="(checkbox, id) in checkBoxes" :key="id">
+      <div class="field-checkbox" v-for="(checkbox, id) in question.option" :key="id">
         <div class="checkbox-container" @click.stop="checkBox(checkbox, question.maxchoose)">
           <span class="checkboxwrapper">
           <i class="checkbox" :class="{'checked': checkbox.isChecked}"></i>

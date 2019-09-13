@@ -321,7 +321,7 @@ export default {
         // 二、循环所选选项，如果该选项有配置跳转题，说明该跳转题必答，赋予 relationSkip属性，汇总这些跳转题为数组，进行去重排序
         let jumpto = Array.from(new Set(data.option.filter(_a => _a.isChecked).map(_b => {
           if (_b.jumpto) {
-            _b.relationSkip = true
+            // _b.relationSkip = true
             this.questionList.filter(_c => parseInt(_c.idx) === _b.jumpto)[0].relationSkip = true
             return _b.jumpto
           } else {
