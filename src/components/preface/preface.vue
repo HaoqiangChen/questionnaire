@@ -49,7 +49,7 @@
               <div class="field-finger">
                 <div class="right">
                   <img src="./left.png" alt="">
-                  <div class="tip">请右滑</div>
+                  <div class="tip">请左滑</div>
                 </div>
               </div>
             </div>

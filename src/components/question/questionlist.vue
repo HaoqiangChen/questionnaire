@@ -20,12 +20,12 @@
                 <div class="tip">向左滑动 下一题</div>
               </div>
             </div>
-<!--            <div class="question-button">-->
-<!--              <button class="question-btn questionPrev" @click="goPrevPage(question)"-->
-<!--                      v-show="currentPage !== 1">上一题-->
-<!--              </button>-->
-<!--              <button class="question-btn questionNext" @click="goNextPage(question)">下一题</button>-->
-<!--            </div>-->
+            <!--            <div class="question-button">-->
+            <!--              <button class="question-btn questionPrev" @click="goPrevPage(question)"-->
+            <!--                      v-show="currentPage !== 1">上一题-->
+            <!--              </button>-->
+            <!--              <button class="question-btn questionNext" @click="goNextPage(question)">下一题</button>-->
+            <!--            </div>-->
           </fieldset>
         </transition>
       </div>
@@ -163,6 +163,7 @@ export default {
       this.showContents = false
     },
     goSkip (data) {
+      if (this.questionList[data - 1].jumpback) delete this.questionList[data - 1].jumpback
       this._showQuestionIndex(data, true)
     },
     touchStart (e) {
@@ -383,8 +384,12 @@ export default {
       if (data.jumpback) {
         this.prevQuestion = parseInt(data.jumpback)
       } else {
-        this.answerIdx.findIndex(_ => _ === parseInt(data.idx))
-        this.prevQuestion = this.answerIdx[this.answerIdx.findIndex(_ => _ === parseInt(data.idx)) - 1]
+        let answerback = this.answerIdx.findIndex(_ => _ === parseInt(data.idx))
+        if (answerback === -1) {
+          this.prevQuestion = this._getNear(this.answerIdx, parseInt(data.idx))
+        } else {
+          this.prevQuestion = this.answerIdx[answerback - 1]
+        }
       }
       // console.log(this.prevQuestion)
       this.nowQuestion = parseInt(data.idx)

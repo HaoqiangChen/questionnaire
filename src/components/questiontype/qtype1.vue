@@ -38,7 +38,7 @@ export default {
   },
   data () {
     return {
-      radios: this.question.option,
+      // radios: this.question.option,
       picked: '',
       jumpTo: 0,
       radioAnswer: {}
@@ -53,7 +53,7 @@ export default {
     Radio (data) {
       // console.log(data)
       // 先取消所有选中项
-      this.radios.forEach(_ => {
+      this.question.option.forEach(_ => {
         _.isChecked = false
       })
       // 再设置当前点击项选中

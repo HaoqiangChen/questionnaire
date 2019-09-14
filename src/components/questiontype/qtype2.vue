@@ -39,15 +39,15 @@ export default {
   },
   data () {
     return {
-      checkBoxes: this.question.option,
+      // checkBoxes: this.question.option,
       checkValue: [],
       checkAnswer: {},
       childAnswer: []
     }
   },
   created () {
-    if (this.checkBoxes.some(_ => _.isChecked)) {
-      this.checkBoxes.map(_ => {
+    if (this.question.option.some(_ => _.isChecked)) {
+      this.question.option.map(_ => {
         if (_.isChecked) this.checkValue.push(_.optionfk)
       })
     }
@@ -56,7 +56,7 @@ export default {
     checkBox (data, maxChoose) {
       // 如果该选项互斥，先取消所有选中项
       if (data.isreject && !data.isChecked) {
-        this.checkBoxes.forEach(_ => {
+        this.question.option.forEach(_ => {
           _.isChecked = false
           this.checkValue = []
         })
@@ -68,7 +68,7 @@ export default {
         this.checkValue = []
       } else {
         // 设置当前点击项切换选中
-        if (this.checkBoxes.some(_ => _.isreject && _.isChecked)) return
+        if (this.question.option.some(_ => _.isreject && _.isChecked)) return
 
         // 判断该题是否设置多选选项个数限制
         data.isChecked = !data.isChecked
@@ -79,7 +79,7 @@ export default {
         }
         if (maxChoose && (this.checkValue.length > parseInt(maxChoose))) {
           this.$weui.topTips(`最多选择${maxChoose}个`)
-          this.checkBoxes.forEach(_ => {
+          this.question.option.forEach(_ => {
             if (_.optionfk === this.checkValue[0]) _.isChecked = false
           })
           this.checkValue.shift()

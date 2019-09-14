@@ -13,7 +13,7 @@
               <span v-else><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
             </li>
             <li class="preface-item">
-              访谈员姓名: <span class="underline">{{userDetail.supervisor}}</span>
+              访谈员姓名: <span class="underline">{{userDetail.interviewername}}</span>
             </li>
             <li class="preface-item">
               联系方式: <span class="underline">{{userDetail.phone}}</span>
