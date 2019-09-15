@@ -122,9 +122,9 @@ export default {
         'localstorage': getLocalAnswer()
       }, (res) => {
         // console.log(res)
-        if (JSON.parse(res) === 0) {
+        if (JSON.parse(res) === '0') {
           loading.hide(() => {
-            this.$weui.toast('操作成功', {
+            this.$weui.toast('上传成功', {
               duration: 300
             })
             setTimeout(() => {
@@ -136,7 +136,7 @@ export default {
         } else {
           loading.hide(() => {
             console.log(JSON.parse(res))
-            this.$weui.toast('操作失败，请重新提交', {
+            this.$weui.toast('上传失败，请重新提交', {
               duration: 1000
             })
           })

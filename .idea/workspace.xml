@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7acb0002-64dd-40d4-b075-c34bde052ea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/preface/preface.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/preface/preface.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/preface/scaleface.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/preface/scaleface.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/question/questionlist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/question/questionlist.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/questiontype/qtype1.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/qtype1.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/questiontype/qtype2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/questiontype/qtype2.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/submit/submit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/submit/submit.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -151,6 +147,8 @@
       <workItem from="1569070260202" duration="12846000" />
       <workItem from="1569208075398" duration="1978000" />
       <workItem from="1569293595275" duration="13567000" />
+      <workItem from="1569552025970" duration="1639000" />
+      <workItem from="1570763866062" duration="8085000" />
     </task>
     <servers />
   </component>
