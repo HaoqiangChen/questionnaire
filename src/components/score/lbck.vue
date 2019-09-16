@@ -5,7 +5,7 @@
       <div class="score-wrapper" v-if="score">
         <scale-face :wjDetail="wjDetail" v-if="wjDetail.userDetail"></scale-face>
         <div class="score-subtext" v-if="score.weidu">一、测评结果及解释</div>
-        <div class="score-table" v-if="score.weidu.length" v-for="(group, index) in score.weidu" :key="index">
+        <div class="score-table" v-if="score.weidu && score.weidu.length" v-for="(group, index) in score.weidu" :key="index">
           <table class="alone-table" v-if="group.alone.length">
             <caption v-if="group.name">{{group.name}}</caption>
             <colgroup>

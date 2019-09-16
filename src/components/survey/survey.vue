@@ -49,6 +49,7 @@ export default {
       cachePage: 0,
       lastPage: false,
       action: 'submit'
+      // submitToQ: false
     }
   },
   created () {
@@ -168,6 +169,15 @@ export default {
       this.showSuccess = true
     },
     backToQuestion () {
+      // this.submitToQ = true
+      let localAnswer = getLocalAnswer()
+      this.questionData = this.questionData.concat(localAnswer)
+      let _tmp = {}
+      this.questionData.map(_ => {
+        _tmp[_.idx] = _
+      })
+      this.questionData = Object.values(_tmp)
+      this.cachePage = parseInt(localAnswer[localAnswer.length - 1].idx)
       this.showSubmit = false
       this.showQuestion = true
     },

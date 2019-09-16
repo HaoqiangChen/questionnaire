@@ -111,36 +111,53 @@ export default {
       }
     },
     submit () {
-      let loading = this.$weui.loading('提交中...', {
-        className: 'question-loading'
-      })
-      this.minutes = getLocalCache(TIMER_KEY, '')
-      window.WebViewJavascriptBridge.callHandler('question', {
-        'action': 'submit',
-        'value': this.answer,
-        'minutes': this.minutes,
-        'localstorage': getLocalAnswer()
-      }, (res) => {
-        // console.log(res)
-        if (JSON.parse(res) === '0') {
-          loading.hide(() => {
-            this.$weui.toast('上传成功', {
-              duration: 1000
+      this.$weui.confirm('提交之后不能修改答案，请问是否确定提交', {
+        title: '是否确定提交',
+        className: 'weui-continue-dialog',
+        buttons: [{
+          label: '取消',
+          type: 'default',
+          onClick: () => {
+            console.log('取消')
+          }
+        }, {
+          label: '确认',
+          type: 'primary',
+          onClick: () => {
+            // console.log('确认')
+            let loading = this.$weui.loading('提交中...', {
+              className: 'question-loading'
             })
-            removeLocalCache(ANSWER_KEY)
-            removeLocalCache(TIMER_KEY)
-            setTimeout(() => {
-              this.$emit('showSuccessDom')
-            }, 1000)
-          })
-        } else {
-          loading.hide(() => {
-            console.log(JSON.parse(res))
-            this.$weui.toast('上传失败，请重新提交', {
-              duration: 3000
+            this.minutes = getLocalCache(TIMER_KEY, '')
+            window.WebViewJavascriptBridge.callHandler('question', {
+              'action': 'submit',
+              'value': this.answer,
+              'minutes': this.minutes,
+              'localstorage': getLocalAnswer()
+            }, (res) => {
+              if (res === '0' || res === 0) {
+                loading.hide(() => {
+                  this.$weui.toast('上传成功', {
+                    duration: 1500
+                  })
+                  console.log('提交成功，清除localStorage！')
+                  removeLocalCache(ANSWER_KEY)
+                  removeLocalCache(TIMER_KEY)
+                  setTimeout(() => {
+                    this.$emit('showSuccessDom')
+                  }, 1500)
+                })
+              } else {
+                loading.hide(() => {
+                  console.log(res)
+                  this.$weui.toast('上传失败，请重新提交', {
+                    duration: 2000
+                  })
+                })
+              }
             })
-          })
-        }
+          }
+        }]
       })
     },
     /**

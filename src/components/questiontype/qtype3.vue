@@ -162,6 +162,9 @@ export default {
       } else if (data.type === '7' && !inputReg.isFloor(e.target.value)) {
         this.$weui.topTips('只能输入有且仅保留两位小数(不包括整数)')
         data.value = e.target.value.substr(0, e.target.value.indexOf('.') + 3)
+      } else if (inputReg.isEmoji(e.target.value)) {
+        this.$weui.topTips('不能输入表情等特殊字符')
+        data.value = ''
       }
     },
     textareaOnchange (e, data) {

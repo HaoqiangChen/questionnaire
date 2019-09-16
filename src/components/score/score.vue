@@ -5,7 +5,8 @@
       <div class="score-wrapper" v-if="score">
         <scale-face :wjDetail="wjDetail" v-if="wjDetail.userDetail"></scale-face>
         <div class="score-subtext" v-if="score.weidu">一、测评结果及解释</div>
-        <div class="score-table" v-if="score.weidu.length" v-for="(group, index) in score.weidu" :key="index">
+        <div class="score-table" v-if="score.weidu && score.weidu.length" v-for="(group, index) in score.weidu"
+             :key="index">
           <table class="alone-table" v-if="group.alone.length">
             <caption v-if="group.name">{{group.name}}</caption>
             <colgroup>
@@ -212,23 +213,26 @@ export default {
           if (res.data.status === ERR_OK) {
             this.score = res.data.result.rows[0]
             // console.log(this.score)
-            if (!this.score.weidu.length) {
-              this.$weui.alert('该量表无需计分， 点击确认返回。', () => {
-                console.log('该量表无需计分，点击确定返回APP')
-                this.backToApp()
-              }, {
-                title: '提示'
+            // if (!this.score.weidu.length) {
+            //   this.$weui.alert('该量表无需计分， 点击确认返回。', () => {
+            //     console.log('该量表无需计分，点击确定返回APP')
+            //     this.backToApp()
+            //   }, {
+            //     title: '提示'
+            //   })
+            // }
+            if (this.score.weidu && this.score.weidu.length) {
+              this.score.weidu.map(_a => {
+                _a.alone = []
+                _a.rows.map(_b => {
+                  if (_b.alone === 'Y') {
+                    _a.alone.push(_b)
+                  }
+                })
+                _a.rows = _a.rows.filter(v => v.alone !== 'Y')
               })
             }
-            this.score.weidu.map(_a => {
-              _a.alone = []
-              _a.rows.map(_b => {
-                if (_b.alone === 'Y') {
-                  _a.alone.push(_b)
-                }
-              })
-              _a.rows = _a.rows.filter(v => v.alone !== 'Y')
-            })
+
             // this.drawLine()
           } else {
             console.log(res.data.stacktrace.substring(0, 300))

@@ -3,7 +3,7 @@
     <div>
       <!--      <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>-->
       <q-scale v-if="scaleData.length" v-show="showQuestion" :scaleData="scaleData" :cachePage="cachePage"
-               @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></q-scale>
+               @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet" :submitToQ="submitToQ"></q-scale>
       <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"
               :scaleData="scaleData"></submit>
       <success :action="action" v-show="showSuccess"></success>
@@ -43,7 +43,8 @@ export default {
       isFontSet: false,
       lastPage: false,
       cachePage: 0,
-      action: 'submit'
+      action: 'submit',
+      submitToQ: false
     }
   },
   created () {
@@ -160,6 +161,7 @@ export default {
     backToQuestion () {
       this.showSubmit = false
       this.showQuestion = true
+      this.submitToQ = true
     },
     backToApp () {
       // console.log('关闭页面返回APP')

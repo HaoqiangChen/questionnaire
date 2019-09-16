@@ -82,6 +82,9 @@ export default {
     isFontSet: {
       type: Boolean
     }
+    // submitToQ: {
+    //   type: Boolean
+    // }
   },
   components: {
     iiwHeader,
@@ -123,15 +126,18 @@ export default {
     this.touch = {}
     this.totalPage = this.questionList.length
 
+    let localAnswer = getLocalAnswer()
+
+    if (localAnswer.length) {
+      this.answerIdx = localAnswer.map(_ => parseInt(_.idx))
+      // if (this.submitToQ) this.cachePage = parseInt(localAnswer[localAnswer.length - 1].idx)
+    }
+
     if (this.cachePage) {
       this._showQuestionIndex(this.cachePage, true)
       this.currentPage = this.cachePage
     } else {
       this._showQuestionIndex(1, true)
-    }
-
-    if (getLocalAnswer().length) {
-      this.answerIdx = getLocalAnswer().map(_ => parseInt(_.idx))
     }
   },
   computed: {
