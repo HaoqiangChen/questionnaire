@@ -8,7 +8,6 @@ import storage from 'good-storage'
 import {getUrlParam} from '@/common/js/util'
 
 const ANSWER_KEY = `${getUrlParam('criminalfk')}-${getUrlParam('paperfk')}`
-const SUBMIT_KEY = getUrlParam('criminalfk')
 
 export function getLocalAnswer () {
   return storage.get(ANSWER_KEY, [])
@@ -18,9 +17,9 @@ export function setLocalAnswer (answer) {
   return storage.set(ANSWER_KEY, answer)
 }
 
-export function removeLocalAnswer () {
+export function removeLocalAnswer (key) {
   storage.forEach(_ => {
-    if (new RegExp(SUBMIT_KEY).test(_)) return storage.remove(_)
+    if (new RegExp(key).test(_)) return storage.remove(_)
   })
 }
 

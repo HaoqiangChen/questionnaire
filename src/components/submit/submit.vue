@@ -125,19 +125,19 @@ export default {
         if (JSON.parse(res) === '0') {
           loading.hide(() => {
             this.$weui.toast('上传成功', {
-              duration: 300
+              duration: 1000
             })
+            removeLocalCache(ANSWER_KEY)
+            removeLocalCache(TIMER_KEY)
             setTimeout(() => {
               this.$emit('showSuccessDom')
-              removeLocalCache(ANSWER_KEY)
-              removeLocalCache(TIMER_KEY)
-            }, 300)
+            }, 1000)
           })
         } else {
           loading.hide(() => {
             console.log(JSON.parse(res))
             this.$weui.toast('上传失败，请重新提交', {
-              duration: 1000
+              duration: 3000
             })
           })
         }
