@@ -1,9 +1,7 @@
 <template>
   <div class="survey">
     <!--    <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>-->
-    <question-list v-if="questionData.length && showQuestion" :questionData="questionData" :contentsList="contentsList"
-                   :cachePage="cachePage"
-                   @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
+    <question-list v-if="questionData.length && showQuestion" :userDetail="wjDetail.userDetail" :questionData="questionData" :contentsList="contentsList" :cachePage="cachePage" @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
     <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"
             :questionData="questionData"></submit>
     <success :action="action" v-show="showSuccess"></success>
@@ -47,6 +45,7 @@ export default {
     }
   },
   created () {
+    this.wjDetail.userDetail = {}
     this.getWjData()
   },
   mounted () {

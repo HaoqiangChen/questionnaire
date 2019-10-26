@@ -1,9 +1,7 @@
 <template>
   <div class="survey">
     <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>
-    <question-list v-if="questionData.length && showQuestion" :questionData="questionData" :contentsList="contentsList"
-                   :cachePage="cachePage"
-                   @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
+    <question-list v-if="questionData.length && showQuestion" :userDetail="wjDetail.userDetail" :questionData="questionData" :contentsList="contentsList" :cachePage="cachePage" @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
     <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"
             :questionData="questionData"></submit>
     <success :action="action" v-show="showSuccess"></success>
@@ -76,7 +74,7 @@ export default {
             }
           }
         }).then((res) => {
-          console.log(res)
+          // console.log(res)
           if (res.data.status === ERR_OK) {
             let cache = getLocalAnswer()
             // console.log(cache)
@@ -121,6 +119,14 @@ export default {
             this.wjDetail = res.data.result.detail
             this.wjDetail.userDetail = res.data.result.userdetail
             if (!this.wjDetail.userDetail) this.wjDetail.userDetail = {}
+
+            if (this.wjDetail.name === '初犯') this.wjDetail.userDetail.usertypename = '初犯'
+            else if (this.wjDetail.name === '重犯') this.wjDetail.userDetail.usertypename = '重犯'
+            else if (this.wjDetail.name === '刑罚执行完毕后未重新犯罪者') this.wjDetail.userDetail.usertypename = '刑罚执行完毕后未重新犯罪者'
+
+            if (this.wjDetail.userDetail.xb && this.questionData.length) {
+              this.questionData.filter(_ => _.qclassify === '性别')[0].option.filter(_ => _.label === res.data.result.userdetail.xb)[0].isChecked = true
+            }
 
             this.contentsList = res.data.result.contents
             loading.hide()

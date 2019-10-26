@@ -1,9 +1,7 @@
 <template>
   <div class="survey">
     <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>
-    <question-list v-if="questionData.length && showQuestion" :questionData="questionData" :contentsList="contentsList"
-                   :cachePage="cachePage"
-                   @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
+    <question-list v-if="questionData.length && showQuestion" :userDetail="wjDetail.userDetail" :questionData="questionData" :contentsList="contentsList" :cachePage="cachePage" @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
     <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"></submit>
     <success :action="action" v-show="showSuccess"></success>
     <font-set v-show="isFontSet"></font-set>
@@ -54,22 +52,43 @@ export default {
     }
   },
   created () {
-    this.getWjData()
+    this.getToken()
   },
   mounted () {
   },
   methods: {
-    getWjData () {
+    getToken () {
+      axios.get('http://iotimc8888.goho.co:17783/sys/web/login.do?action=login&username=13712312312&password=XASR5G2454CW343C705E7141C9F793E').then((res) => {
+        if (res.data.status === ERR_OK) {
+          this.getWjData(res.data.token)
+        } else {
+          this.$weui.alert(`${res.data.message} <br/>点击确认返回。`, () => {
+            this.backToApp()
+          }, {
+            title: '登陆接口请求失败'
+          })
+        }
+      }).catch((err) => {
+        console.log(err)
+        this.$weui.alert(`${err} <br/>点击确认返回。`, () => {
+          this.backToApp()
+        }, {
+          title: '网络问题，询问是否服务器在重启'
+        })
+      })
+    },
+    getWjData (token) {
       let loading = this.$weui.loading('问卷数据加载中...', {
         className: 'question-loading'
       })
       let ajaxUrl = 'http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=getQuestions'
 
-      axios.post(`${ajaxUrl}&authorization=${getUrlParam('token')}`, {
+      axios.post(`${ajaxUrl}&authorization=${token}`, {
         data: {
           filter: {
             id: getUrlParam('paperfk'),
-            recordfk: getUrlParam('recordfk')
+            recordfk: getUrlParam('recordfk'),
+            test: '1'
           }
         }
       }).then((res) => {
@@ -87,7 +106,6 @@ export default {
                 onClick: () => {
                   // console.log('重新答题')
                   setTimeout(() => {
-                    console.log(this.$weui)
                     this.$weui.confirm('重新答题会将之前已经回答的清空，点击确认重新答题，点击取消退出该页面？', () => {
                       removeLocalCache(ANSWER_KEY)
                       this.questionData = res.data.result.rows
@@ -118,6 +136,7 @@ export default {
                     _tmp[_.idx] = _
                   })
                   this.questionData = Object.values(_tmp)
+
                   this.cachePage = parseInt(cache[cache.length - 1].idx)
                   this.showQuestion = true
                 }
@@ -125,7 +144,6 @@ export default {
             })
           } else {
             this.questionData = res.data.result.rows
-            // console.log(this.questionData)
             if (!this.questionData.length) {
               this.$weui.alert('抱歉，无该问卷数据! 点击确认返回。', () => {
                 this.backToApp()
@@ -137,6 +155,14 @@ export default {
           this.wjDetail = res.data.result.detail
           this.wjDetail.userDetail = res.data.result.userdetail
           if (!this.wjDetail.userDetail) this.wjDetail.userDetail = {}
+
+          if (this.wjDetail.name === '初犯') this.wjDetail.userDetail.usertypename = '初犯'
+          else if (this.wjDetail.name === '重犯') this.wjDetail.userDetail.usertypename = '重犯'
+          else if (this.wjDetail.name === '刑罚执行完毕后未重新犯罪者') this.wjDetail.userDetail.usertypename = '刑罚执行完毕后未重新犯罪者'
+
+          if (this.wjDetail.userDetail.xb && this.questionData.length) {
+            this.questionData.filter(_ => _.qclassify === '性别')[0].option.filter(_ => _.label === res.data.result.userdetail.xb)[0].isChecked = true
+          }
 
           this.contentsList = res.data.result.contents
           loading.hide()

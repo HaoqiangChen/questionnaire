@@ -112,7 +112,7 @@ export default {
     },
     inputOnchange (e, data) {
       let inputLen = e.target.value.length
-      let inputWidth = inputLen * 20 > defaultWidth ? inputLen * 20 : defaultWidth
+      let inputWidth = inputLen * 35 > defaultWidth ? inputLen * 35 : defaultWidth
 
       if (inputWidth > parseInt(this.screenWidth) - 60) {
         e.target.style['width'] = '100%'
@@ -124,17 +124,16 @@ export default {
 
       if (inputLen > data.maxwords && data.maxwords) {
         data.value = e.target.value.slice(0, parseInt(data.maxwords))
-        this.$weui.topTips(`至多输入${data.maxwords}个字符`, {
-          duration: warmDuration
-        })
+        this.$weui.toast(`至多输入${data.maxwords}个字符`, {duration: warmDuration, className: 'weui-toast-warning'})
       }
     },
     blurOnchange (e, data) {
       let inputLen = e.target.value.length
 
       if (inputLen < data.minwords && data.minwords) {
-        this.$weui.topTips(`至少输入${data.minwords}个字符`, {
+        this.$weui.toast(`至少输入${data.minwords}个字符`, {
           duration: warmDuration,
+          className: 'weui-toast-warning',
           callback: function callback () {
             e.target.focus()
           }
@@ -142,36 +141,45 @@ export default {
       }
       if (data.maxnumber && parseInt(e.target.value) > parseInt(data.maxnumber)) {
         data.value = ''
-        this.$weui.topTips(`输入数不能大于${data.maxnumber}`, {
-          duration: warmDuration
-        })
+        this.$weui.toast(`输入数不能大于${data.maxnumber}`, {duration: warmDuration, className: 'weui-toast-warning'})
+      } else if (data.minnumber && parseInt(e.target.value) < parseInt(data.minnumber)) {
+        data.value = ''
+        this.$weui.toast(`输入数不能小于${data.minnumber}`, {duration: warmDuration, className: 'weui-toast-warning'})
       }
 
       if (data.type === '2' && inputReg.isInt(e.target.value)) {
-        this.$weui.topTips('只能输入整数')
+        this.$weui.toast('只能输入整数', {duration: warmDuration, className: 'weui-toast-warning'})
         // data.value = e.target.value.replace(/[^\d]/g, '')
         data.value = e.target.value.substr(0, e.target.value.search(/[^\d]/g))
       } else if (data.type === '3' && !inputReg.isPercent(e.target.value)) {
-        this.$weui.topTips('请输入0-100的百分数，最多保留3位小数')
+        // this.$weui.topTips('请输入0-100的百分数，最多保留3位小数')
+        this.$weui.toast('请输入0-100的百分数，最多保留3位小数', {duration: warmDuration, className: 'weui-toast-warning'})
         // data.value = e.target.value.substr(0, e.target.value.indexOf('.') + 4)
         data.value = ''
       } else if (data.type === '4' && !inputReg.isPhone(e.target.value)) {
-        this.$weui.topTips('请输入正确的手机号')
+        this.$weui.toast('请输入正确的手机号', {duration: warmDuration, className: 'weui-toast-warning'})
       } else if (data.type === '5' && !inputReg.isEmail(e.target.value)) {
-        this.$weui.topTips('请输入正确格式的邮件地址')
+        this.$weui.toast('请输入正确格式的邮件地址', {duration: warmDuration, className: 'weui-toast-warning'})
       } else if (data.type === '7' && !inputReg.isFloor(e.target.value)) {
-        this.$weui.topTips('只能输入有且仅保留两位小数(不包括整数)')
+        this.$weui.toast('只能输入有且仅保留两位小数(不包括整数)', {duration: warmDuration, className: 'weui-toast-warning'})
         data.value = e.target.value.substr(0, e.target.value.indexOf('.') + 3)
+      } else if (data.type === '8' && !inputReg.isNumber(e.target.value) && e.target.value !== '记不清') {
+        this.$weui.toast('只能输入数字或者记不清', {duration: warmDuration, className: 'weui-toast-warning'})
+        data.value = ''
       } else if (inputReg.isEmoji(e.target.value)) {
-        this.$weui.topTips('不能输入表情等特殊字符')
+        this.$weui.toast('不能输入表情等特殊字符', {duration: warmDuration, className: 'weui-toast-warning'})
         data.value = ''
       }
     },
     textareaOnchange (e, data) {
       let inputLen = e.target.value.length
       if (inputLen > data.maxwords) {
-        this.$weui.topTips(`至多输入${data.maxwords}个字符`, {
-          duration: warmDuration
+        this.$weui.toast(`至多输入${data.maxwords}个字符`, {
+          duration: warmDuration,
+          className: 'weui-toast-warning',
+          callback: function callback () {
+            e.target.focus()
+          }
         })
         data.value = e.target.value.slice(0, data.maxwords)
         this.inputCorner = `${data.maxwords}`

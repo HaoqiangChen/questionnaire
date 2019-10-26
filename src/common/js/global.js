@@ -33,7 +33,7 @@ export const autoDuration = 200
 // 设置默认input 的配置
 export const inputOption = {
   // 设置默认input 的宽度
-  defaultWidth: 50
+  defaultWidth: 90
 }
 
 // 设置weui插件的默认配置
@@ -41,7 +41,7 @@ export const weuiOption = {
   // 设置警告停留时间
   warmDuration: 2000,
   // 设置datePicker开始时间
-  dateStart: deviceDate.getFullYear() - 80,
+  dateStart: deviceDate.getFullYear() - 95,
   // 设置datePicker结束时间
-  dateEnd: deviceDate.getFullYear() + 50
+  dateEnd: deviceDate.getFullYear() + 1
 }

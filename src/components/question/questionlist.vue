@@ -62,14 +62,22 @@ import contents from '@/components/contents/contents'
 import Timer from '@/components/timer/timer'
 import {autoDuration, weuiOption} from '@/common/js/global'
 import {addClass, removeClass} from '@/common/js/dom'
-import {getLocalAnswer, setLocalAnswer, deleteQuestionAnswer} from '@/common/js/cache'
+import {getLocalCache, setLocalCache, getLocalAnswer, setLocalAnswer, deleteQuestionAnswer} from '@/common/js/cache'
+import {getUrlParam, getTimestamp, getAge} from '@/common/js/util'
 
 // 定义滑动距离百分比，如果为10说明只有滑动大于（100/10）距离才触发
 const touchPercent = 15
 const warmDuration = weuiOption.warmDuration
+const USER_KEY = `${getUrlParam('criminalfk')}-${getUrlParam('paperfk')}-user`
 
 export default {
   props: {
+    userDetail: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
     questionData: {
       type: Array
     },
@@ -98,6 +106,7 @@ export default {
     return {
       headerTitle: '问卷调查',
       rightBtn: 1,
+      userDetails: this.userDetail,
       questionList: this.questionData,
       // 题目是否已答
       hasAnswer: false,
@@ -138,6 +147,15 @@ export default {
       this.currentPage = this.cachePage
     } else {
       this._showQuestionIndex(1, true)
+    }
+
+    let userDetails = getLocalCache(USER_KEY, '')
+    if (!userDetails) {
+      // let obj = {birthday: '1980年06月15日', age: 40, firstCrime: '2000年8月', firstCrimeAge: 20, punishment: '有期徒刑缓刑', sentence: 39}
+      // setLocalCache(USER_KEY, Object.assign(this.userDetails, obj))
+      setLocalCache(USER_KEY, this.userDetails)
+    } else {
+      this.userDetails = userDetails
     }
   },
   computed: {
@@ -243,7 +261,7 @@ export default {
           if (step2.length && !step2.every(_ => _ === true)) {
             return false
           } else {
-            return true
+            return this.logicalJudgment(question)
           }
         } else {
           return true
@@ -253,16 +271,7 @@ export default {
         for (let i = 0; i < inputDom.length; i++) {
           inputDom[i].blur()
         }
-        // 一些特殊题目还有客户的特殊要求效果
-        if (parseInt(question.formula) === 1) {
-          if (parseInt(question.option[0].value) !== parseInt(question.option[1].value) + parseInt(question.option[2].value)) {
-            this.$weui.toast(`小孩总数应为男孩与女孩之和`, {duration: warmDuration, className: 'weui-toast-warning'})
-            return false
-          } else if (parseInt(question.option[3].value) > parseInt(question.option[0].value)) {
-            this.$weui.toast(`排行数不能大于孩子总数`, {duration: warmDuration, className: 'weui-toast-warning'})
-            return false
-          }
-        }
+
         step1 = question.option.every(_ => _.value !== '')
         if (!step1) {
           return false
@@ -279,10 +288,10 @@ export default {
           if (step2.length && !step2.every(_ => _ === true)) {
             return false
           } else {
-            return true
+            return this.logicalJudgment(question)
           }
         } else {
-          return true
+          return this.logicalJudgment(question)
         }
       } else {
         step1 = question.option.some(_ => _.isChecked === true)
@@ -421,8 +430,12 @@ export default {
       }, autoDuration)
     },
     onProgressBarChange (percent) {
-      let maxPage = Math.max.apply(null, Array.from(new Set(this.answerIdx)).sort((a, b) => a - b))
       let percentPage = this.totalPage * percent | 0
+      if (!percentPage) {
+        this.$weui.topTips(`请按顺序作答`, {duration: 1000})
+        return
+      }
+      let maxPage = Math.max.apply(null, Array.from(new Set(this.answerIdx)).sort((a, b) => a - b))
       // console.log(maxPage, percentPage)
       if (percentPage >= maxPage) {
         // this.showPrevQuestion = false
@@ -442,6 +455,265 @@ export default {
         this.hideContentsDom()
       } else {
         this.$weui.topTips(`抱歉，已回答题库中无该类型，请选择其他类型跳转`, {duration: 1000})
+      }
+    },
+    // 应客户特殊性要求的逻辑判断
+    logicalJudgment (question) {
+      // console.log(question)
+      // 逻辑1：保存出生日期，并且年龄范围应≥14周岁，≤95周岁
+      if (question.formula === '1') {
+        if (question.option[0].value === '记不清') {
+          this.$weui.toast('该题必填，不可选择 记不清', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        }
+        let age = getAge(question.option[0].value)
+        if (age >= 14 && age <= 95) {
+          this.userDetails.birthday = question.option[0].value
+          this.userDetails.age = age
+          setLocalCache(USER_KEY, this.userDetails)
+          return true
+        } else {
+          this.$weui.toast('年龄范围应≥14周岁，≤95周岁', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        }
+      } else if (question.formula === '2') { // 逻辑2：年龄范围应≥18周岁，≤95周岁
+        if (question.option[0].value === '记不清') return true
+        let age = getAge(this.userDetails.birthday, question.option[0].value)
+        if (age >= 18 && age <= 95) {
+          return true
+        } else {
+          this.$weui.toast('年龄范围应≥18周岁，≤95周岁', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        }
+      } else if (question.formula === '3') { // 逻辑3：年龄范围应≥0周岁，≤95周岁
+        if (parseInt(question.type) === 1 || parseInt(question.type) === 2) {
+          let isLogic = false
+          question.option.filter(_ => _.child && _.isChecked).map(i => {
+            i.qchild.filter(j => parseInt(j.type) === 3).map(k => {
+              if (k.option.filter(l => parseInt(l.type) === 6)[0].value === '记不清了') return true
+              let age = getAge(this.userDetails.birthday, k.option.filter(l => parseInt(l.type) === 6)[0].value)
+              if (age >= 0 && age <= 95) {
+                isLogic = true
+              } else {
+                this.$weui.toast('年龄范围应≥0周岁，≤95周岁', {duration: warmDuration, className: 'weui-toast-warning'})
+                isLogic = false
+              }
+            })
+          })
+          return isLogic
+        } else {
+          if (question.option[0].value === '记不清') return true
+          let age = getAge(this.userDetails.birthday, question.option[0].value)
+          if (age >= 0 && age <= 95) {
+            return true
+          } else {
+            this.$weui.toast('年龄范围应≥0周岁，≤95周岁', {duration: warmDuration, className: 'weui-toast-warning'})
+            return false
+          }
+        }
+      } else if (question.formula === '4') { // 逻辑4：家里共有__个小孩， 其中男孩__个， 女孩__个，你排行第__。
+        if (parseInt(question.option[0].value) !== parseInt(question.option[1].value) + parseInt(question.option[2].value)) {
+          this.$weui.toast('小孩总数应为男孩与女孩之和', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        } else if (parseInt(question.option[3].value) > parseInt(question.option[0].value)) {
+          this.$weui.toast('排行数不能大于孩子总数', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        } else if (!parseInt(question.option[3].value)) {
+          this.$weui.toast('排行数不能为0', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        } else return true
+      } else if (question.formula === '5') { // 逻辑5：起始时间不早于出生年月，累计时间≤14年0月
+        let startTime = question.option.filter(_ => _.child && _.isChecked)[0].qchild[0].option[0].value
+        if (startTime === '记不清了') return true
+        let age = getAge(this.userDetails.birthday, startTime)
+        if (age >= 0 && age <= 14) {
+          let year = question.option.filter(_ => _.child && _.isChecked)[0].qchild[0].option[1].value
+          let month = question.option.filter(_ => _.child && _.isChecked)[0].qchild[0].option[2].value
+          if (parseInt(year) === 14 && parseInt(month) > 0) {
+            this.$weui.toast('起始时间应该为你出生年月至14岁之间，累计时间≤14年0月', {duration: warmDuration, className: 'weui-toast-warning'})
+            question.option.filter(_ => _.child && _.isChecked)[0].qchild[0].option[2].value = 0
+            return false
+          } else return true
+        } else {
+          this.$weui.toast('起始时间应该为你出生年月至14岁之间，累计时间≤14年0月', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        }
+      } else if (question.formula === '6') { // 逻辑6：初犯，本题=1。重犯，2≤本题≤30。未重新，1~30，填1的话，F3跳到I1，否则跳到F4。
+        if (this.userDetails.usertypename === '初犯') {
+          if (parseInt(question.option[0].value) !== 1) {
+            this.$weui.toast('初犯为第一次犯罪,请填1', {
+              duration: warmDuration,
+              className: 'weui-toast-warning',
+              callback: function callback () {
+                question.option[0].value = 1
+              }
+            })
+            return false
+          } else return true
+        } else if (this.userDetails.usertypename === '刑罚执行完毕后未重新犯罪者') {
+          if (parseInt(question.option[0].value) > 0 && parseInt(question.option[0].value) <= 30) {
+            if (parseInt(question.option[0].value) === 1 && this.questionList.filter(_ => _.code === 'I1.1').length) {
+              let idx = this.questionList.filter(_ => _.code === 'I1.1')[0].idx
+              this.questionList.filter(_ => _.code === 'C3')[0].anyjump = parseInt(idx)
+            } else {
+              console.log('继续顺序作答')
+            }
+            return true
+          } else {
+            this.$weui.toast('刑罚执行完毕后未重新犯罪者的犯罪数目范围为 1~30', {
+              duration: warmDuration,
+              className: 'weui-toast-warning',
+              callback: function callback () {
+                question.option[0].value = ''
+              }
+            })
+            return false
+          }
+        } else {
+          if (question.option[0].value >= 2 && question.option[0].value <= 30) {
+            return true
+          } else {
+            this.$weui.toast('重犯的犯罪数目范围为 2~30', {
+              duration: warmDuration,
+              className: 'weui-toast-warning',
+              callback: function callback () {
+                question.option[0].value = ''
+              }
+            })
+            return false
+          }
+        }
+      } else if (question.formula === '7') { // 逻辑7：保存第一次犯罪时间，并且时间不早于14周岁
+        if (question.option[0].value === '记不清') {
+          this.userDetails.firstCrime = '记不清'
+          return true
+        }
+        this.userDetails.firstCrime = question.option[0].value
+        let age = getAge(this.userDetails.birthday, question.option[0].value)
+        this.userDetails.firstCrimeAge = age
+        setLocalCache(USER_KEY, this.userDetails)
+        if (age >= 14 && age <= 95) return true
+        else {
+          this.$weui.toast('年龄范围应≥14周岁，≤95周岁', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        }
+      } else if (question.formula === '8') { // 逻辑8：≤第一次犯罪时年龄
+        if (this.userDetails.firstCrime === '记不清') return true
+        let age = getAge(this.userDetails.birthday, this.userDetails.firstCrime)
+        if (parseInt(question.option[0].value) > age) {
+          this.$weui.toast('所填时长不得超过 第一次犯罪时年龄', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        } else return true
+      } else if (question.formula === '9') { // 逻辑9：保存第一次犯罪后被判刑罚，刑期最大为 25年0月
+        if (parseInt(question.type) === 1) {
+          let issue = question.option.filter(_ => _.isChecked)[0]
+          let sentence = 300
+          this.userDetails.punishment = issue.label
+          if (issue.child) {
+            sentence = parseInt(issue.qchild[0].option[0].value) * 12 + parseInt(issue.qchild[0].option[1].value)
+          }
+          if (sentence > 0 && sentence <= 300) {
+            this.userDetails.sentence = sentence
+            setLocalCache(USER_KEY, this.userDetails)
+            return true
+          } else {
+            this.$weui.toast('刑期最大为 25年0月，最小填写 0年1月', {duration: warmDuration, className: 'weui-toast-warning'})
+            return false
+          }
+        } else {
+          let num = parseInt(question.option[0].value) * 12 + parseInt(question.option[1].value)
+          if (num > 0 && num <= 300) {
+            return true
+          } else {
+            this.$weui.toast('刑期最大为 25年0月，最小填写 0年1月', {duration: warmDuration, className: 'weui-toast-warning'})
+            return false
+          }
+        }
+      } else if (question.formula === '10') { // 逻辑10：减刑 ≤第一次犯罪刑期的1/2，判处无期徒刑的，≤12年
+        let num = parseInt(question.option[1].value) * 12 + parseInt(question.option[2].value)
+        if (this.userDetails.punishment.search('有期') !== -1) {
+          if (num > 0 && num <= this.userDetails.sentence / 2) return true
+          else {
+            this.$weui.toast('减刑 ≤第一次犯罪刑期的1/2，不可填写 0年0月', {duration: warmDuration, className: 'weui-toast-warning'})
+            return false
+          }
+        } else {
+          if (num > 0 && num <= 144) return true
+          else {
+            this.$weui.toast('判处有期徒刑之外的减刑 ≤12年，不可填写 0年0月', {duration: warmDuration, className: 'weui-toast-warning'})
+            return false
+          }
+        }
+      } else if (question.formula === '11') { // 逻辑11：≥第一次犯罪时间
+        if (this.userDetails.firstCrime === '记不清') return true
+        if (getTimestamp(this.userDetails.firstCrime) > getTimestamp(question.option[0].value)) {
+          this.$weui.toast('所填不得晚于 第一次犯罪时间', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        } else return true
+      } else if (question.formula === '12') { // 逻辑12：年份所填数字≤受访者年龄
+        if (parseInt(question.option[0].value) === 0 && parseInt(question.option[1].value) === 0) {
+          this.$weui.toast('不可填写 0年0月', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        } else if (parseInt(question.option[0].value) > this.userDetails.age) {
+          this.$weui.toast('所填时长不得超过 你的年龄', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        } else return true
+      } else if (question.formula === '13') { // 逻辑13：6岁≤当时年纪≤受访者年龄
+        if (parseInt(question.option[0].value) >= 6 && parseInt(question.option[0].value) <= this.userDetails.age) {
+          return true
+        } else {
+          this.$weui.toast('6岁 ≤ 所填数 ≤ 你的年龄', {
+            duration: warmDuration,
+            className: 'weui-toast-warning',
+            callback: function callback () {
+              question.option[0].value = ''
+            }
+          })
+          return false
+        }
+      } else if (question.formula === '14') { // 逻辑14：年份≤受访者年龄，若≥25，提示访员确认；0年0月，提示访员确认
+        if (parseInt(question.option[0].value) > this.userDetails.age) {
+          this.$weui.toast('所填年份不可大于 你的年龄', {
+            duration: warmDuration,
+            className: 'weui-toast-warning',
+            callback: function callback () {
+              question.option[0].value = ''
+            }
+          })
+          return false
+        } else if (parseInt(question.option[0].value) >= 25) {
+          this.$weui.toast('所填年份 ≥25，请确认', {duration: warmDuration, className: 'weui-toast-warning'})
+        } else if (parseInt(question.option[0].value) === 0 && parseInt(question.option[1].value) === 0) {
+          this.$weui.toast('0年0月，请确认是否符合事实', {duration: warmDuration, className: 'weui-toast-warning'})
+        }
+        return true
+      } else if (question.formula === '15') { // 逻辑15：保存第一次使用毒品年份
+        if (question.option[0].value === '记不清') {
+          this.userDetails.firstDrug = '记不清'
+          return true
+        }
+        let firstDrug = getTimestamp(question.option[0].value)
+        if (firstDrug < getTimestamp(this.userDetails.birthday)) {
+          this.$weui.toast('不可选择你 出生年月 之前', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        } else {
+          let age = getAge(this.userDetails.birthday, question.option[0].value)
+          this.userDetails.firstDrug = question.option[0].value
+          this.userDetails.firstDrugAge = age
+          setLocalCache(USER_KEY, this.userDetails)
+          return true
+        }
+      } else if (question.formula === '16') { // 逻辑16：≤第一次使用毒品的年龄
+        if (this.userDetails.firstDrug === '记不清') return true
+        let drug = question.option.filter(_ => _.isChecked && _.child)
+        if (drug.length && drug[0].qchild[0].option[0].value > this.userDetails.firstDrugAge) {
+          this.$weui.toast('不可大于 第一次使用毒品的时间', {duration: warmDuration, className: 'weui-toast-warning'})
+          return false
+        } else return true
+      } else if (question.formula === '17') { // 逻辑17：
+        return true
+      } else {
+        return true
       }
     },
     _hideQuestionIndex (index) {

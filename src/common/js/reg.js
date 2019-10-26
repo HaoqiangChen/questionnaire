@@ -21,6 +21,11 @@ export const inputReg = {
     let reg = /^(100|[1-9]?\d(\.\d\d?\d?)?)$/
     return reg.test(str)
   },
+  // 数字
+  isNumber (str) {
+    let reg = /^[0-9]+.?[0-9]*$/
+    return reg.test(str)
+  },
   // 手机
   isPhone (str) {
     let reg = /^[1]([3-9])[0-9]{9}$/
