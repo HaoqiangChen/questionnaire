@@ -162,7 +162,8 @@ export default {
         flex-wrap wrap
 
         .field-radio
-          flex 0 0 50%
+          /*flex 0 0 50%*/
+          margin-right 15px
           margin-bottom 20px
 
           .radiowrapper
@@ -189,7 +190,8 @@ export default {
             padding-top 5px
 
         .field-checkbox
-          flex 0 0 50%
+          /*flex 0 0 50%*/
+          margin-right 15px
           margin-bottom 20px
 
           .checkboxwrapper

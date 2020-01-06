@@ -1,7 +1,7 @@
 <template>
   <div class="scale">
     <div>
-      <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>
+<!--      <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>-->
       <q-scale v-if="scaleData.length" v-show="showQuestion" :scaleData="scaleData" :cachePage="cachePage"
                @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></q-scale>
       <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"></submit>
@@ -39,7 +39,7 @@ export default {
       scaleData: [],
       wjDetail: {},
       showPreFace: false,
-      showQuestion: false,
+      showQuestion: true,
       showSubmit: false,
       showSuccess: false,
       isFontSet: false,
@@ -49,35 +49,38 @@ export default {
     }
   },
   created () {
-    this.getWjData()
+    this.getToken()
   },
   mounted () {
   },
   methods: {
-    apiTest () {
-      let ajaxUrl = 'http://iotimc8888.goho.co:17783/terminal/interview/system.do?action=login&username=1321365765@qq.com&password=XASR5G2454CW343C705E7141C9F793E'
-
-      // axios.post(`${ajaxUrl}&authorization=${getUrlParam('token')}`, {
-      axios.post(`${ajaxUrl}`, {
-        // data: {
-        //   filter: {
-        //     username: '1321365765@qq.com',
-        //     password: 'XASR5G2454CW343C705E7141C9F793E'
-        //   }
-        // }
-      }).then((res) => {
-        console.log(res)
+    getToken () {
+      axios.get('http://iotimc8888.goho.co:17783/sys/web/login.do?action=login&username=13712312312&password=XASR5G2454CW343C705E7141C9F793E').then((res) => {
+        if (res.data.status === ERR_OK) {
+          this.getWjData(res.data.token)
+        } else {
+          this.$weui.alert(`${res.data.message} <br/>点击确认返回。`, () => {
+            this.backToApp()
+          }, {
+            title: '登陆接口请求失败'
+          })
+        }
       }).catch((err) => {
         console.log(err)
+        this.$weui.alert(`${err} <br/>点击确认返回。`, () => {
+          this.backToApp()
+        }, {
+          title: '网络问题，询问是否服务器在重启'
+        })
       })
     },
-    getWjData () {
+    getWjData (token) {
       let loading = this.$weui.loading('量表数据加载中...', {
         className: 'question-loading'
       })
       let ajaxUrl = 'http://iotimc8888.goho.co:17783/security/wjdc/scale.do?action=getQuestionNaireDetail'
 
-      axios.post(`${ajaxUrl}&authorization=${getUrlParam('token')}`, {
+      axios.post(`${ajaxUrl}&authorization=${token}`, {
         data: {
           filter: {
             id: getUrlParam('paperfk'),

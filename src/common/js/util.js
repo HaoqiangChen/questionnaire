@@ -41,10 +41,10 @@ export function getAge (birthday, day) {
   let date = new Date()
   let today = day ? formatChineseDate(day) : [date.getFullYear(), date.getMonth() + 1, date.getDate()]
 
-  let age = today[0] - birth[0]
+  let age = today[0] - parseInt(birth[0])
 
-  if (today[1] && today[1] < birth[1]) --age
-  else if (today[1] && today[1] === birth[1] && today[2] && today[2] < birth[2]) --age
+  if (today[1] && today[1] < parseInt(birth[1])) --age
+  else if (today[1] && today[1] === parseInt(birth[1]) && today[2] && today[2] < parseInt(birth[2])) --age
 
   return age
 }

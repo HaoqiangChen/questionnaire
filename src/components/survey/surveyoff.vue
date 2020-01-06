@@ -1,7 +1,7 @@
 <template>
   <div class="survey">
     <!--    <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>-->
-    <question-list v-if="questionData.length && showQuestion" :userDetail="wjDetail.userDetail" :questionData="questionData" :contentsList="contentsList" :cachePage="cachePage" @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
+    <question-list v-if="questionData.length && showQuestion" :userDetail="userDetail" :questionData="questionData" :contentsList="contentsList" :cachePage="cachePage" @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
     <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"
             :questionData="questionData"></submit>
     <success :action="action" v-show="showSuccess"></success>
@@ -29,6 +29,7 @@ export default {
   data () {
     return {
       wjDetail: {},
+      userDetail: {},
       questionData: [],
       contentsList: [],
       name: '',
@@ -45,7 +46,6 @@ export default {
     }
   },
   created () {
-    this.wjDetail.userDetail = {}
     this.getWjData()
   },
   mounted () {
@@ -105,6 +105,16 @@ export default {
 
             this.contentsList = JSON.parse(offlineData.detail).contents
             this.name = JSON.parse(offlineData.detail).detail.name
+            if (this.name === '初犯') this.userDetail.usertypename = '初犯'
+            else if (this.name === '重犯') this.userDetail.usertypename = '重犯'
+            else if (this.name === '刑罚执行完毕后未重新犯罪者') this.userDetail.usertypename = '刑罚执行完毕后未重新犯罪者'
+            if (!this.userDetail.usertypename) {
+              this.$weui.alert(`${this.name} <br/>点击确认返回。`, () => {
+                this.backToApp()
+              }, {
+                title: '发生数据错误，找不到罪犯类型'
+              })
+            }
             this.introduce = JSON.parse(offlineData.detail).detail.introduce
             loading.hide()
             this.$weui.alert(`${this.introduce}`, () => {

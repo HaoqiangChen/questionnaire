@@ -484,9 +484,9 @@ export default {
     .container
       position relative
       display flex
-      justify-content flex-end
+      justify-content space-between
       align-items center
-      padding 5px 0 15px
+      padding 5px 10px 15px
 
       /*&:after*/
       /*  display block*/
@@ -497,11 +497,11 @@ export default {
       /*  border-top 1px solid #a4b3c1*/
       /*  content ''*/
 
-      .timer
-        padding-right 50px
+      /*.timer*/
+      /*  padding-right 50px*/
 
       .finish, .unfinish
-        padding-right 30px
+        /*padding-right 30px*/
 
         i
           display inline-block
@@ -529,7 +529,7 @@ export default {
           bg-image('danger')
 
       .page
-        padding-right 25px
+        /*padding-right 25px*/
         color $color-text
 
 </style>

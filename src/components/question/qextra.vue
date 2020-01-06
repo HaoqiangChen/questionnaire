@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {autoDuration, weuiOption} from '@/common/js/global'
+import {weuiOption} from '@/common/js/global'
 import {addClass, removeClass} from '@/common/js/dom'
 
 // 定义滑动距离百分比，如果为10说明只有滑动大于（100/10）距离才触发
@@ -84,7 +84,7 @@ export default {
 
       setTimeout(() => {
         this.goNextPage(data)
-      }, autoDuration)
+      }, 500)
     },
     touchStart (e) {
       this.touch.initiated = true

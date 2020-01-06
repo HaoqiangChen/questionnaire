@@ -1,6 +1,6 @@
 <template>
   <div class="survey">
-    <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>
+<!--    <preface :wjDetail="wjDetail" v-if="showPreFace" @showQuestionDom="showQuestionDom"></preface>-->
     <question-list v-if="questionData.length && showQuestion" :userDetail="wjDetail.userDetail" :questionData="questionData" :contentsList="contentsList" :cachePage="cachePage" @showSubmitDom="showSubmitDom" @showFontSet="showFontSet" :isFontSet="isFontSet"></question-list>
     <submit v-if="showSubmit" @showSuccessDom="showSuccessDom" @backToQuestion="backToQuestion"></submit>
     <success :action="action" v-show="showSuccess"></success>
@@ -41,7 +41,7 @@ export default {
       questionData: [],
       contentsList: [],
       showPreFace: false,
-      showQuestion: false,
+      showQuestion: true,
       showSubmit: false,
       showSuccess: false,
 
@@ -57,6 +57,7 @@ export default {
   mounted () {
   },
   methods: {
+    // http://192.168.8.129:8080/?paperfk=B701AB0474BE475B8CF22E6152B9FC01&recordfk=1e304d458a6a4fdc9afe029f912308b9&criminalfk=202010231749&type=wjdc&isonline=3#/wjdc
     getToken () {
       axios.get('http://iotimc8888.goho.co:17783/sys/web/login.do?action=login&username=13712312312&password=XASR5G2454CW343C705E7141C9F793E').then((res) => {
         if (res.data.status === ERR_OK) {
@@ -159,9 +160,17 @@ export default {
           if (this.wjDetail.name === '初犯') this.wjDetail.userDetail.usertypename = '初犯'
           else if (this.wjDetail.name === '重犯') this.wjDetail.userDetail.usertypename = '重犯'
           else if (this.wjDetail.name === '刑罚执行完毕后未重新犯罪者') this.wjDetail.userDetail.usertypename = '刑罚执行完毕后未重新犯罪者'
+          if (!this.wjDetail.userDetail.usertypename) {
+            this.$weui.alert(`${this.wjDetail.name} <br/>点击确认返回。`, () => {
+              this.backToApp()
+            }, {
+              title: '发生数据错误，找不到罪犯类型'
+            })
+          }
 
-          if (this.wjDetail.userDetail.xb && this.questionData.length) {
-            this.questionData.filter(_ => _.qclassify === '性别')[0].option.filter(_ => _.label === res.data.result.userdetail.xb)[0].isChecked = true
+          if (this.wjDetail.userDetail && this.wjDetail.userDetail.xb && this.questionData.length) {
+            let genderQuestion = this.questionData.filter(_ => _.qclassify === '性别')[0].option.filter(_ => _.label === this.wjDetail.userDetail.xb)
+            if (genderQuestion && genderQuestion.length) genderQuestion[0].isChecked = true
           }
 
           this.contentsList = res.data.result.contents

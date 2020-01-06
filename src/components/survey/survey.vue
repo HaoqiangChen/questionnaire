@@ -123,9 +123,17 @@ export default {
             if (this.wjDetail.name === '初犯') this.wjDetail.userDetail.usertypename = '初犯'
             else if (this.wjDetail.name === '重犯') this.wjDetail.userDetail.usertypename = '重犯'
             else if (this.wjDetail.name === '刑罚执行完毕后未重新犯罪者') this.wjDetail.userDetail.usertypename = '刑罚执行完毕后未重新犯罪者'
+            if (!this.wjDetail.userDetail.usertypename) {
+              this.$weui.alert(`${this.wjDetail.name} <br/>点击确认返回。`, () => {
+                this.backToApp()
+              }, {
+                title: '发生数据错误，找不到罪犯类型'
+              })
+            }
 
-            if (this.wjDetail.userDetail.xb && this.questionData.length) {
-              this.questionData.filter(_ => _.qclassify === '性别')[0].option.filter(_ => _.label === res.data.result.userdetail.xb)[0].isChecked = true
+            if (this.wjDetail.userDetail && this.wjDetail.userDetail.xb && this.questionData.length) {
+              let genderQuestion = this.questionData.filter(_ => _.qclassify === '性别')[0].option.filter(_ => _.label === this.wjDetail.userDetail.xb)
+              if (genderQuestion && genderQuestion.length) genderQuestion[0].isChecked = true
             }
 
             this.contentsList = res.data.result.contents

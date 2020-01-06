@@ -58,35 +58,22 @@ export default {
         let answer = getLocalAnswer()
 
         // 获取题目关联配置
-        let relationOption = JSON.parse(this.question.relation).option
+        let relationOption = JSON.parse(this.question.relation.replace(/\\/g, '')).option
         // 获取题目关联配置的逻辑运算符
-        let relationLogic = JSON.parse(this.question.relation).logic
+        let relationLogic = JSON.parse(this.question.relation.replace(/\\/g, '')).logic
         // 获取题目关联配置的跳题序号
-        let relationJumpto = JSON.parse(this.question.relation).jumpto
+        let relationJumpto = JSON.parse(this.question.relation.replace(/\\/g, '')).jumpto
 
-        for (let i = 0; i < relationOption.length; i++) {
-          let relationId = relationOption[i].split(',')[0]
-          let relationFk = relationOption[i].split(',')[1]
-          let relationQestion = answer.filter(_ => parseInt(_.idx) === parseInt(relationId))
+        let relationQestions = []
+        relationOption.map(_i => {
+          let relationQestion = answer.filter(_j => parseInt(_j.idx) === parseInt(_i.split(',')[0]))
+          if (relationQestion.length && relationQestion[0].option.filter(_ => _.isChecked).map(_ => _.optionfk).includes(_i.split(',')[1])) {
+            relationQestion.length && relationQestions.push(relationQestion[0])
+          }
+        })
 
-          if (!relationQestion.length) {
-            relation = false
-            break
-          } else {
-            if (!(relationQestion[0].option.filter(_ => _.isChecked).map(_ => _.optionfk).includes(relationFk))) {
-              relation = false
-            } else {
-              relation = true
-            }
-          }
-          if (relationLogic && relationLogic === '&' && !relation) {
-            relation = false
-            break
-          } else if ((!relationLogic || relationLogic !== '&') && relation) {
-            relation = true
-            break
-          }
-        }
+        if (relationLogic && relationLogic === '&' && relationQestions.length === relationOption.length) relation = true
+        else if ((!relationLogic || relationLogic !== '&') && relationQestions.length) relation = true
 
         if (!relation && relationJumpto) {
           this.$emit('goSkip', parseInt(relationJumpto))
