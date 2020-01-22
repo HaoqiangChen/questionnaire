@@ -32,7 +32,7 @@ export function getTimestamp (date) {
 }
 
 /**
- * 根据出生日期和第二个参数日期计算 年龄（周岁）
+ * 根据出生日期和第二个参数日期计算 年龄
  * @param birthday 出生日期
  * @param day 日期
  */
@@ -45,8 +45,21 @@ export function getAge (birthday, day) {
 
   if (today[1] && today[1] < parseInt(birth[1])) --age
   else if (today[1] && today[1] === parseInt(birth[1]) && today[2] && today[2] < parseInt(birth[2])) --age
+  else if (today[1] && today[1] === parseInt(birth[1]) && today[2] && today[2] > parseInt(birth[2])) ++age
 
   return age
+}
+
+/**
+ * 通过身份证号码获取出生年月日
+ * @param idCard 身份证号码
+ */
+export function getBirthdayFromIdCard (idCard) {
+  let birthday = ''
+  if (idCard.length === 15) birthday = '19' + idCard.substr(6, 6)
+  else if (idCard.length === 18) birthday = idCard.substr(6, 8)
+
+  return birthday.replace(/(.{4})(.{2})(.{2})/, '$1年$2月$3日')
 }
 
 /**

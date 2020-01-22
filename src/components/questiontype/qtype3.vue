@@ -163,7 +163,7 @@ export default {
       } else if (data.type === '7' && !inputReg.isFloor(e.target.value)) {
         this.$weui.toast('只能输入有且仅保留两位小数(不包括整数)', {duration: warmDuration, className: 'weui-toast-warning'})
         data.value = e.target.value.substr(0, e.target.value.indexOf('.') + 3)
-      } else if (data.type === '8' && !inputReg.isNumber(e.target.value) && e.target.value !== '记不清') {
+      } else if (data.type === '8' && e.target.value !== '记不清' && inputReg.isInt(e.target.value)) {
         this.$weui.toast('只能输入数字或者记不清', {duration: warmDuration, className: 'weui-toast-warning'})
         data.value = ''
       } else if (inputReg.isEmoji(e.target.value)) {

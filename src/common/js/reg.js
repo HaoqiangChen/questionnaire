@@ -23,7 +23,7 @@ export const inputReg = {
   },
   // 数字
   isNumber (str) {
-    let reg = /^[0-9]+.?[0-9]*$/
+    let reg = /^[0-9]+\.?[0-9]*$/
     return reg.test(str)
   },
   // 手机

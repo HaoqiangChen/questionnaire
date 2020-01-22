@@ -14,7 +14,7 @@
 
 <script>
 import axios from 'axios'
-import {getUrlParam} from '@/common/js/util'
+import {getUrlParam, getBirthdayFromIdCard} from '@/common/js/util'
 import {ERR_OK} from '@/common/js/global'
 import preface from '@/components/preface/preface'
 import questionList from '@/components/question/questionlist'
@@ -168,9 +168,15 @@ export default {
             })
           }
 
-          if (this.wjDetail.userDetail && this.wjDetail.userDetail.xb && this.questionData.length) {
-            let genderQuestion = this.questionData.filter(_ => _.qclassify === '性别')[0].option.filter(_ => _.label === this.wjDetail.userDetail.xb)
-            if (genderQuestion && genderQuestion.length) genderQuestion[0].isChecked = true
+          if (this.wjDetail.userDetail && this.questionData.length) {
+            if (this.wjDetail.userDetail.zjhm && (this.wjDetail.userDetail.zjhm.length === 15 || this.wjDetail.userDetail.zjhm.length === 18)) {
+              let zfBirthday = getBirthdayFromIdCard(this.wjDetail.userDetail.zjhm)
+              this.questionData.filter(_ => _.qclassify === '年龄')[0].option[0].value = zfBirthday
+            }
+            if (this.wjDetail.userDetail.xb) {
+              let genderQuestion = this.questionData.filter(_ => _.qclassify === '性别')[0].option.filter(_ => _.label === this.wjDetail.userDetail.xb)
+              if (genderQuestion && genderQuestion.length) genderQuestion[0].isChecked = true
+            }
           }
 
           this.contentsList = res.data.result.contents
